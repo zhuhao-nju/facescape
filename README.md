@@ -1,22 +1,50 @@
 # FaceScape
 
-This is the project page for our paper "FaceScape: a Large-Scale High Quality 3D Face Dataset and Detailed Riggable 3D Face Prediction", which is published in CVPR 2020.  &nbsp;&nbsp; [[pdf]](https://openaccess.thecvf.com/content_CVPR_2020/papers/Yang_FaceScape_A_Large-Scale_High_Quality_3D_Face_Dataset_and_Detailed_CVPR_2020_paper.pdf) &nbsp;&nbsp; [[supplemetary]](https://openaccess.thecvf.com/content_CVPR_2020/supplemental/Yang_FaceScape_A_Large-Scale_CVPR_2020_supplemental.zip)
+This is the project page for our paper 
+"FaceScape: a Large-Scale High Quality 3D Face Dataset and Detailed Riggable 3D Face Prediction". 
+[[CVPR2020 paper]](https://openaccess.thecvf.com/content_CVPR_2020/papers/Yang_FaceScape_A_Large-Scale_High_Quality_3D_Face_Dataset_and_Detailed_CVPR_2020_paper.pdf) &nbsp;&nbsp; [[supplemetary]](https://openaccess.thecvf.com/content_CVPR_2020/supplemental/Yang_FaceScape_A_Large-Scale_CVPR_2020_supplemental.zip)
+
+We will also update latest progress and available sources to this repository~
 
 ### Dataset
 
-The website of FaceScape is online: https://facescape.nju.edu.cn/.  We recommend browsing on PC using Chrome/Firefox.  Currently, 3D models are available for application and download, and multi-view image data will be released in the near future.  Because face data involves the privacy of participants, we use strict license terms to ensure that the data is not abused. Please visit [Download] subpage of the website for data access.
+The datasets are released in website: https://facescape.nju.edu.cn/.  The available sources include:
 
-FaceScape dataset contains 18,760 textured 3D faces, captured from 938 subjects and each with 20 specific expressions. The 3D models contain high-quality facial geometry that is also processed to be topologically uniformed.  Please refer to our paper for more details.
+| Item              | Description                                                         | Quantity                                         | Quality |
+|-------------------|---------------------------------------------------------------------|------------------------------------------------|---------|
+| TU models | Topologically uniformed 3D face models <br>with displacement map and texture map. | **16940 models** <br>(847 id × 20 exp)       |  Detailed geometry, <br>4K dp/tex maps |
+| Multi-view data | Multi-view images, camera paramters <br>and coresponding 3D face mesh. | **>400k images** <br>(359 id × 20 exp <br>× ≈60 view)|  4M~12M pixels       |
+| Bilinear model | The statistical model to transform the base <br>shape into the vector space.  |   4 for different settings      |    Only for base shape.    |
+| Info list         | Gender / age of the subjects.                                        |   847 subjects   |    --    |
+| Tools |  Python code to generate **depth map**, <br>**landmarks**, **facial segmentation**, etc. |    --                                              |    --    |
+ 
+ 
+The datasets are only released for non-commercial research use.  As facial data involves the privacy of participants, we use strict license terms to ensure that the dataset is not abused.  Please visit the [website](https://facescape.nju.edu.cn/) for more information. 
 
+
+### Tools
+ - [mview](/tools/mview/README.md) - parse and test multi-view images and corresponding 3D models.
+ - [bilinear model](/tools/bilinear_model/README.md) - simple demo to use facescape bilinear model.
+ - [landmark](/tools/landmark/README.md) - extract landmarks using predefined vertex index.
+ - [extract face](/tools/extract_face/README.md) - extract facial region from the mesh of full head.
+<!-- [render](/tools/render/README.md) - simple demo to render models to color image and depth map using pyrender. -->
 
 ### Code
-
-Coming soon.
+Code of 'detailed riggable 3D face prediction' will be released soon.
 
 ### ChangeLog
-* 2020/7/7 The 3DMM has been updated. More details can be found in [Data] sub-page of the facescape website.
-* 2020/6/13 The website of FaceScape is [online](https://facescape.nju.edu.cn/). 3D models and 3DMM are available for download.
-* 2020/3/31 The pre-print paper is available on [arXiv](https://arxiv.org/abs/2003.13989).
+
+* **2020/7/25** <br>
+Multi-view data is available for download, check it [here](/tools/mview/README.md).<br>
+Bilinear model with vertex-color has been added to v1.3, check it [here](/tools/bilinear_model/README.md). <br>
+Info list including gender and age is available in download page.<br>
+Tools and samples are added to this repository.<br>
+* **2020/7/7** <br>
+Bilinear model v1.2 is updated, check it [here](/tools/bilinear_model/README.md).<br>
+* **2020/6/13** <br>
+The [website]((https://facescape.nju.edu.cn/)) of FaceScape is online. <br>3D models and bilinear models are available for download.<br>
+* **2020/3/31** <br>
+The pre-print paper is available on [arXiv](https://arxiv.org/abs/2003.13989).<br>
 
 ### Bibtex
 ```
