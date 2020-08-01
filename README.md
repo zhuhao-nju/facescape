@@ -4,11 +4,15 @@ This is the project page for our paper
 "FaceScape: a Large-Scale High Quality 3D Face Dataset and Detailed Riggable 3D Face Prediction". 
 [[CVPR2020 paper]](https://openaccess.thecvf.com/content_CVPR_2020/papers/Yang_FaceScape_A_Large-Scale_High_Quality_3D_Face_Dataset_and_Detailed_CVPR_2020_paper.pdf) &nbsp;&nbsp; [[supplemetary]](https://openaccess.thecvf.com/content_CVPR_2020/supplemental/Yang_FaceScape_A_Large-Scale_CVPR_2020_supplemental.zip)
 
-We will also update latest progress and available sources to this repository~
+We will also update latest progress and available sources to this repository~ **[latest update: 2020/7/25]**
 
 ### Dataset
 
-The datasets are released in website: https://facescape.nju.edu.cn/.  The available sources include:
+The datasets are released in website: https://facescape.nju.edu.cn/.  
+
+<img src="/figures/facescape_all.jpg" width="800"> 
+
+The available sources include:
 
 | Item              | Description                                                         | Quantity                                         | Quality |
 |-------------------|---------------------------------------------------------------------|------------------------------------------------|---------|
