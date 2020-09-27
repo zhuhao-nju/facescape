@@ -4,7 +4,7 @@ This is the project page for our paper
 "FaceScape: a Large-Scale High Quality 3D Face Dataset and Detailed Riggable 3D Face Prediction". 
 [[CVPR2020 paper]](https://openaccess.thecvf.com/content_CVPR_2020/papers/Yang_FaceScape_A_Large-Scale_High_Quality_3D_Face_Dataset_and_Detailed_CVPR_2020_paper.pdf) &nbsp;&nbsp; [[supplemetary]](https://openaccess.thecvf.com/content_CVPR_2020/supplemental/Yang_FaceScape_A_Large-Scale_CVPR_2020_supplemental.zip)
 
-We will also update latest progress and available sources to this repository~ **[latest update: 2020/7/25]**
+We will also update latest progress and available sources to this repository~ **[latest update: 2020/9/27]**
 
 ### Dataset
 
@@ -34,10 +34,11 @@ The datasets are only released for non-commercial research use.  As facial data 
 <!-- [render](/tools/render/README.md) - simple demo to render models to color image and depth map using pyrender. -->
 
 ### Code
-Code of 'detailed riggable 3D face prediction' will be released soon.
+The code of detailed riggable 3D face prediction in our paper is released [here](https://github.com/yanght321/Detailed3DFace.git).
 
 ### ChangeLog
-
+* **2020/9/27** <br>
+The code of detailed riggable 3D face prediction is released, check it [here](https://github.com/yanght321/Detailed3DFace.git).<br>
 * **2020/7/25** <br>
 Multi-view data is available for download, check it [here](/tools/mview/README.md).<br>
 Bilinear model with vertex-color has been added to v1.3, check it [here](/tools/bilinear_model/README.md). <br>
