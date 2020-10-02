@@ -6,6 +6,11 @@ This is the project page for our paper
 
 We will also update latest progress and available sources to this repository~ **[latest update: 2020/9/27]**
 
+```diff
+- We are very sorry that due to the renovation of the campus network, the FaceScape website (https://facescape.nju.edu.cn/)
+- will not be accessible from October 1 to October 8, 2020.
+```
+
 ### Dataset
 
 The datasets are released in website: https://facescape.nju.edu.cn/.  
