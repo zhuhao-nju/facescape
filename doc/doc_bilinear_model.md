@@ -20,7 +20,7 @@ Ver1.6 provides four models:
 * *facescape_bm_v1.6_847_300_52_id.npz* - Same to above, except the identity dimesion is reduced to 300, not 50.
 * *facescape_bm_v1.6_847_50_52_id_exp.npz* - Same to above, except that PCA is applied to both identity dimension(50) and expression dimension(52).
 
-The demo code to use the facescape bilinear model ver1.6 can be found [here](https://nbviewer.jupyter.org/zhuhao-nju/facescape/blob/master/toolkit/demo_bilinear_basic.ipynb). 
+The demo code to use the facescape bilinear model ver1.6 can be found [here](https://nbviewer.jupyter.org/github/zhuhao-nju/facescape/blob/master/toolkit/demo_bilinear_basic.ipynb). 
 
 Please refer to our [paper](https://openaccess.thecvf.com/content_CVPR_2020/papers/Yang_FaceScape_A_Large-Scale_High_Quality_3D_Face_Dataset_and_Detailed_CVPR_2020_paper.pdf) for more about the bilinear model. 
 
@@ -33,7 +33,7 @@ Our bilinear model is a statistical model which transforms the base shape of the
 - *core_847_300_52.npy* - bilinear model with 52 expression parameters and 300 identity parameters.
 - *factors_id_847_50_52.npy* and factors_id_847_300_52.npy are identity parameters corresponding to 847 subjects in the dataset.
 
-The demo code to use the facescape bilinear model ver1.0/1.2/1.3 can be found [here](https://nbviewer.jupyter.org/zhuhao-nju/facescape/blob/master/toolkit/demo_bilinear_basic.ipynb).
+The demo code to use the facescape bilinear model ver1.0/1.2/1.3 can be found [here](https://nbviewer.jupyter.org/github/zhuhao-nju/facescape/blob/master/toolkit/demo_bilinear_basic.ipynb).
 
 ### Version Log
 
