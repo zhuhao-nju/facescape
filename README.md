@@ -20,7 +20,7 @@ The available sources include:
 | Bilinear model | The statistical model to transform the base <br>shape into the vector space.  |   4 for different settings      |    Only for base shape.    |
 | Info list         | Gender / age of the subjects.                                        |   847 subjects   |    --    |
  
-The datasets are only released for non-commercial research use.  As facial data involves the privacy of participants, we use strict license terms to ensure that the dataset is not abused.  Please visit the [website](https://facescape.nju.edu.cn/) for more information. 
+The datasets are only released for non-commercial research use.  As facial data involves the privacy of participants, we use strict license terms to ensure that the dataset is not abused.
 
 ### Docs
 * [doc of TU models](/doc/doc_tu_model.md).
