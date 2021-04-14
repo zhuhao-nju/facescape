@@ -95,4 +95,4 @@ Rt_gl = np.array([[1, 0, 0], [0, -1, 0], [0, 0, -1]]).dot(Rt_cv)
 ```
 
 ### Projection Test
-A simple demo is provided to render the mesh model to fit the image.  The code can be found [here](https://nbviewer.jupyter.org/zhuhao-nju/facescape/blob/master/toolkit/demo_mview_projection.ipynb).
+A simple demo is provided to render the mesh model to fit the image.  The code can be found [here](https://nbviewer.jupyter.org/github/zhuhao-nju/facescape/blob/master/toolkit/demo_mview_projection.ipynb).
