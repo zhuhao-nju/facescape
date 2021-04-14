@@ -1,0 +1,9 @@
+# python requirements
+numpy
+opencv-python
+Pillow
+scipy
+trimesh
+pyrender
+openmesh
+
