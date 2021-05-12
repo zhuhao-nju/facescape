@@ -31,7 +31,7 @@ The datasets are only released for non-commercial research use.  As facial data 
 Start using python toolkit [here](/toolkit/README.md), the demos include:
 
 * [bilinear_model-basic](https://nbviewer.jupyter.org/github/zhuhao-nju/facescape/blob/master/toolkit/demo_bilinear_basic.ipynb) - use facescape bilinear model to generate 3D mesh models.
-* bilinear_model-fit (coming soon) - fit the bilinear model to 2D/3D landmarks.
+* [bilinear_model-fit](https://nbviewer.jupyter.org/github/zhuhao-nju/facescape/blob/master/toolkit/demo_bilinear_fit.ipynb) - fit the bilinear model to 2D/3D landmarks.
 * [multi-view-project](https://nbviewer.jupyter.org/github/zhuhao-nju/facescape/blob/master/toolkit/demo_mview_projection.ipynb) - Project 3D models to multi-view images.
 * [landmark](https://nbviewer.jupyter.org/github/zhuhao-nju/facescape/blob/master/toolkit/demo_landmark.ipynb) - extract landmarks using predefined vertex index.
 * [facial_mask](https://nbviewer.jupyter.org/github/zhuhao-nju/facescape/blob/master/toolkit/demo_mask.ipynb) - extract facial region from the full head TU-models.
@@ -44,6 +44,8 @@ Start using python toolkit [here](/toolkit/README.md), the demos include:
 The code of detailed riggable 3D face prediction in our paper is released [here](https://github.com/yanght321/Detailed3DFace.git).
 
 ### ChangeLog
+* **2021/5/13** <br>
+Fitting demo is added to toolkit. Please note if you download bilinear model v1.6 before 2021/5/13, you need to download it again, because some parameters required by fitting demo are supplemented.
 * **2021/4/14** <br>
 The bilinear model has been updated to 1.6, check it [here](/doc/doc_bilinear_model.md).<br>
 The new bilinear model now can be downloaded from *NJU drive* or *Google Drive* without requesting a license key. Check it [here](/doc/external_link_fsbm.md).<br>
