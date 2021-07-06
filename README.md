@@ -4,11 +4,6 @@
 
 Our latest progress will be updated to this repository constantly - *[latest update: 2021/5/13]*
 
-```diff
-- We are very sorry that due to the renovation of the campus network, the FaceScape website (https://facescape.nju.edu.cn/)
-- is temporarily inaccessible during 2021/06/20--2021/07/10. The service will resume after 22:00PM, July 10, 2021. 
-```
-
 ### Data
 
 The data can be downloaded in https://facescape.nju.edu.cn/ after requesting a license key.
