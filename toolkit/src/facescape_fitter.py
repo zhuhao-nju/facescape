@@ -1,11 +1,17 @@
-import numpy as np, dlib, cv2, sklearn.mixture
+"""
+Copyright 2020, Hao Zhu, Haotian Yang, NJU.
+Parametric model fitter.
+"""
+
+import numpy as np, cv2, os, sklearn.mixture
 from scipy.optimize import least_squares, minimize
 from scipy.linalg import orthogonal_procrustes
 from src.facescape_bm import facescape_bm
 from src.mesh_obj import mesh_obj
 
 class facescape_fitter(facescape_bm):
-    def __init__(self, fs_file, lm_file = None):
+    def __init__(self, fs_file, kp2d_backend, 
+                 dlib_kp2d_model = "./predef/shape_predictor_68_face_landmarks.dat"):
         super(facescape_fitter, self).__init__(fs_file)
         
         # make expression GaussianMixture model
@@ -17,24 +23,47 @@ class facescape_fitter(facescape_bm):
         self.exp_gmm.means_ = self.exp_gmm_means
         self.exp_gmm.covariances_ = self.exp_gmm_covariances
         
+        self.kp2d_backend = kp2d_backend
+        
         # prepare landmarks extractor
-        if lm_file != None:
-            self.face_pred = dlib.shape_predictor(lm_file)
+        if self.kp2d_backend == 'face_alignment':
+            import face_alignment
+            self.detector = face_alignment.FaceAlignment(face_alignment.LandmarksType._2D, 
+                                                         flip_input=False)
+        elif self.kp2d_backend == 'dlib':
+            import dlib
+            if os.path.isfile(dlib_kp2d_model) is False:
+                print("Missing model: please download the model of landmarkd predictor from " + \
+                      "http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2, " + \
+                      "and extract 'shape_predictor_68_face_landmarks.dat' to %s" % dlib_kp2d_model)
+                return 0
+            self.face_pred = dlib.shape_predictor(dlib_kp2d_model)
             self.detector = dlib.get_frontal_face_detector()
         else:
-            self.face_pred = None
-            self.detector = None
-            
+            print("kp2d_backend is not recognized: '%s', " % self.kp2d_backend + \
+                  "please use 'face_alignment' or 'dlib'.")
         self.fp_size = 512
         
     def detect_kp2d(self, src_img):
-        # ========== extract landmarks ==========
         fp_scale = float(np.max(src_img.shape[:2])) / self.fp_size
         sc_img = cv2.resize(src_img, (round(src_img.shape[1]/fp_scale), 
-                                      round(src_img.shape[0]/fp_scale)))
-        faces = self.detector(sc_img, 1) # detect faces
-        pts = self.face_pred(sc_img, faces[0]) # get landmarks for the first face
-        kp2d = np.array([[p.x*fp_scale, src_img.shape[0] - p.y*fp_scale - 1] for p in pts.parts()])
+                                      round(src_img.shape[0]/fp_scale)))        
+        # ========== extract landmarks ==========
+        if self.kp2d_backend == 'face_alignment':
+            preds = self.detector.get_landmarks(sc_img)
+            if len(preds) == 0:
+                print("no face found by face_alignment detector.")
+                return 0
+            elif len(preds) >1:
+                print("more than one face found by face_alignment detector.")
+                return 0
+            pts = preds[0].astype(np.float64)
+            kp2d = pts * fp_scale
+            kp2d[:, 1] = src_img.shape[0] - kp2d[:, 1] - 1
+        elif self.kp2d_backend == 'dlib':
+            faces = self.detector(sc_img, 1) # detect faces
+            pts = self.face_pred(sc_img, faces[0]) # get landmarks for the first face
+            kp2d = np.array([[p.x*fp_scale, src_img.shape[0] - p.y*fp_scale - 1] for p in pts.parts()])
         return kp2d
 
     def fit_kp2d(self, kp2d):
