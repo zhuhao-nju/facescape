@@ -1,3 +1,8 @@
+"""
+Copyright 2020, Hao Zhu, NJU.
+Utility functions.
+"""
+
 import numpy as np
 import cv2, PIL.Image
 

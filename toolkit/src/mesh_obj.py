@@ -1,3 +1,8 @@
+"""
+Copyright 2020, Hao Zhu, Haotian Yang, NJU.
+OBJ file loader and writer.
+"""
+
 import numpy as np, os
 
 class mesh_obj:

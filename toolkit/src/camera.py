@@ -1,3 +1,8 @@
+"""
+Copyright 2020, Hao Zhu, NJU.
+Camera projection and inverse-projection.
+"""
+
 import numpy as np
 
 # Basic camera projection and inv-projection

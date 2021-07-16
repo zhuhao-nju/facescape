@@ -1,3 +1,8 @@
+"""
+Copyright 2020, Hao Zhu, NJU.
+Parametric model fitter..
+"""
+
 import numpy as np
 import pyrender
 import trimesh

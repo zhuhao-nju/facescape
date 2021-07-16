@@ -1,3 +1,8 @@
+"""
+Copyright 2020, Hao Zhu, Haotian Yang, NJU.
+Bilinear model.
+"""
+
 import numpy as np
 from src.mesh_obj import mesh_obj
 
