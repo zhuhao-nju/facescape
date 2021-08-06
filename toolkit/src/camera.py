@@ -30,7 +30,7 @@ class CamPara():
         self.inv_proj_mat = np.linalg.pinv(self.proj_mat)
 
         # compute ray directions of camera center pixel
-        c_uv = np.array([float(K[0, 2])/2, float(K[1, 2])/2])
+        c_uv = np.array([float(K[0, 2]), float(K[1, 2])])
         self.center_dir = self.inv_project(c_uv)
             
     def get_camcenter(self):
