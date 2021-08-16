@@ -6,7 +6,8 @@ Our latest progress will be updated to this repository constantly - *[latest upd
 
 ### Data
 
-The data can be downloaded in https://facescape.nju.edu.cn/ after requesting a license key.
+The data can be downloaded in https://facescape.nju.edu.cn/ after requesting a license key.  
+*New:* Share link on google drive is available after requesting license key, view [here](https://github.com/zhuhao-nju/facescape/blob/master/doc/facescape_googledrive.md) for detail.
 *New:* The bilinear model ver1.6 can be downloaded without requesting a license key, view [here](https://github.com/zhuhao-nju/facescape/blob/master/doc/external_link_fsbm.md) for the link and rules.
 
 <img src="/figures/facescape_all.jpg" width="800"> 
@@ -38,12 +39,14 @@ Start using python toolkit [here](/toolkit/README.md), the demos include:
 * [render](https://nbviewer.jupyter.org/github/zhuhao-nju/facescape/blob/master/toolkit/demo_render.ipynb) - render TU-models to color images and depth map. 
 * [alignment](https://nbviewer.jupyter.org/github/zhuhao-nju/facescape/blob/master/toolkit/demo_align.ipynb) - align all the multi-view models.
 * [symmetry](https://nbviewer.jupyter.org/github/zhuhao-nju/facescape/blob/master/toolkit/demo_symmetry.ipynb) - get the correspondence of the vertices on TU-models from left side to right side.
-* rigging (Coming soon) - rig the TU-models to an simple animation with changing experssions.
  
 ### Code
 The code of detailed riggable 3D face prediction in our paper is released [here](https://github.com/yanght321/Detailed3DFace.git).
 
 ### ChangeLog
+
+* **2021/8/16** <br>
+Share link on google drive is available after requesting license key, view [here](https://github.com/zhuhao-nju/facescape/blob/master/doc/facescape_googledrive.md) for detail.
 * **2021/5/13** <br>
 Fitting demo is added to toolkit. Please note if you download bilinear model v1.6 before 2021/5/13, you need to download it again, because some parameters required by fitting demo are supplemented.
 * **2021/4/14** <br>
