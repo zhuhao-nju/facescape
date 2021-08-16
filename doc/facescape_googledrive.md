@@ -2,7 +2,7 @@
 
 ### Request share link
 
-Considering that downloading from our server may be unstable in some regions other than China, we use google drive to share the data as an alternative option. The share link can be requested and is only valid within ** two weeks ** after you receive it. The data in the google drive share link is all the same as data on facescape website.
+Considering that downloading from our server may be unstable in some regions other than China, we use google drive to share the data as an alternative option. The share link can be requested and is only valid within **two weeks** after you receive it. The data in the google drive share link is all the same as data on facescape website.
 
 To request the share link, the following points should be noted:
 
@@ -10,7 +10,7 @@ To request the share link, the following points should be noted:
 
 * For anyone who didn't have a license key, you should firstly apply for it in https://facescape.nju.edu.cn, and mention the request of share link in the application mail.
 
-* The share link is only valid in two weeks after you receive it.  Please do NOT distribute the share link to others. 
+* The share link is only valid within **two weeks** after you receive it.  Please do NOT distribute the share link to others. 
 
 
 ### Download in command line

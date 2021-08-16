@@ -2,12 +2,12 @@
 
 *FaceScape* provides large-scale high-quality 3D face datasets, parametric models, docs and toolkits about 3D face related technology. [[CVPR2020 paper]](https://openaccess.thecvf.com/content_CVPR_2020/papers/Yang_FaceScape_A_Large-Scale_High_Quality_3D_Face_Dataset_and_Detailed_CVPR_2020_paper.pdf) &nbsp;&nbsp; [[supplemetary]](https://openaccess.thecvf.com/content_CVPR_2020/supplemental/Yang_FaceScape_A_Large-Scale_CVPR_2020_supplemental.zip)
 
-Our latest progress will be updated to this repository constantly - *[latest update: 2021/5/13]*
+Our latest progress will be updated to this repository constantly - *[latest update: 2021/8/16]*
 
 ### Data
 
 The data can be downloaded in https://facescape.nju.edu.cn/ after requesting a license key.  
-*New:* Share link on google drive is available after requesting license key, view [here](https://github.com/zhuhao-nju/facescape/blob/master/doc/facescape_googledrive.md) for detail.
+*New:* Share link on google drive is available after requesting license key, view [here](https://github.com/zhuhao-nju/facescape/blob/master/doc/facescape_googledrive.md) for detail.  
 *New:* The bilinear model ver1.6 can be downloaded without requesting a license key, view [here](https://github.com/zhuhao-nju/facescape/blob/master/doc/external_link_fsbm.md) for the link and rules.
 
 <img src="/figures/facescape_all.jpg" width="800"> 
