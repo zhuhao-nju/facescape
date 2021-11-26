@@ -5,6 +5,7 @@ Bilinear model.
 
 import numpy as np
 from src.mesh_obj import mesh_obj
+import timeit
 
 class facescape_bm(object):
     def __init__(self, filename):
@@ -58,7 +59,9 @@ class facescape_bm(object):
         
     # generate full mesh
     def gen_full(self, id_vec, exp_vec):
+        starttime = timeit.default_timer()
         verts = self.shape_bm_core.dot(id_vec).dot(exp_vec).reshape((-1, 3))
+        print("Matrix multiplication:", timeit.default_timer() - starttime)
         mesh = mesh_obj()
         mesh.create(vertices = verts, 
                     texcoords = self.texcoords, 

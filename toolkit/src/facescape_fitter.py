@@ -29,7 +29,7 @@ class facescape_fitter(facescape_bm):
         if self.kp2d_backend == 'face_alignment':
             import face_alignment
             self.detector = face_alignment.FaceAlignment(face_alignment.LandmarksType._2D, 
-                                                         flip_input=False)
+                                                         flip_input=False, device='cpu')
         elif self.kp2d_backend == 'dlib':
             import dlib
             if os.path.isfile(dlib_kp2d_model) is False:
@@ -119,7 +119,7 @@ class facescape_fitter(facescape_bm):
         
         params = (id, exp, scale, trans, rot_vector)
         
-        return mesh, params, mesh_verts_img
+        return mesh, params
     
     
     # input is 68 x 3 numpy array or list
