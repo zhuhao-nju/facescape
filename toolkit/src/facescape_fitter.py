@@ -29,7 +29,7 @@ class facescape_fitter(facescape_bm):
         if self.kp2d_backend == 'face_alignment':
             import face_alignment
             self.detector = face_alignment.FaceAlignment(face_alignment.LandmarksType._2D, 
-                                                         flip_input=False)
+                                                         flip_input=False, device='cpu')
         elif self.kp2d_backend == 'dlib':
             import dlib
             if os.path.isfile(dlib_kp2d_model) is False:
@@ -66,7 +66,7 @@ class facescape_fitter(facescape_bm):
             kp2d = np.array([[p.x*fp_scale, src_img.shape[0] - p.y*fp_scale - 1] for p in pts.parts()])
         return kp2d
 
-    def fit_kp2d(self, kp2d):
+    def fit_kp2d(self, kp2d, model):
         
         # ========== initialize ==========
         lm_pos = np.asarray(kp2d)
@@ -102,7 +102,7 @@ class facescape_fitter(facescape_bm):
                                                                 lm_pos_3D, lm_pos)
             id = self._optimize_identity_2d(scale, trans, rot_vector, id, exp, 
                                     lm_core_tensor, lm_pos, prior_weight=1)
-            exp = self._optimize_expression_2d(scale, trans, rot_vector, id, exp, 
+            exp = self._optimize_expression_2d(scale, trans, rot_vector, id, exp,
                                        lm_core_tensor, lm_pos, prior_weight=1)
             mesh_verts = self.shape_bm_core.dot(id).dot(exp).reshape((-1, 3))
             mesh_verts_img = self.project(mesh_verts, rot_vector, scale, trans)
@@ -111,8 +111,11 @@ class facescape_fitter(facescape_bm):
         
         # ========== make mesh ==========
         mesh = mesh_obj()
-        mesh.create(vertices = self.project(mesh_verts, rot_vector, scale, trans, keepz = True), 
-                    faces_v = self.fv_indices_front)
+        mesh.create(vertices = self.project(mesh_verts, rot_vector, scale, trans, keepz = True),
+                    faces_v = model.fv_indices,     # face vertices
+                    #faces_vn = ,    # face normals
+                    faces_vt = model.ft_indices,    # face texture coordinates
+                    )
         
         params = (id, exp, scale, trans, rot_vector)
         
@@ -161,6 +164,68 @@ class facescape_fitter(facescape_bm):
         params = (id, exp, scale, trans, rot_vector)
 
         return mesh, params
+
+    def get_texture(self, img, verts_img, mesh, model):
+        """ Generates texture map from face image  """
+        h, w, _ = img.shape
+
+        texture = np.zeros((4096, 4096, 3))
+
+        for face in mesh.faces:
+            face_vertices, face_normals, tc, material = face
+
+            if max(abs(model.texcoords[tc[0] - 1][0] - model.texcoords[tc[1] - 1][0]),
+                    abs(model.texcoords[tc[0] - 1][0] - model.texcoords[tc[2] - 1][0]),
+                    abs(model.texcoords[tc[1] - 1][0] - model.texcoords[tc[2] - 1][0]),
+                    abs(model.texcoords[tc[0] - 1][1] - model.texcoords[tc[1] - 1][1]),
+                    abs(model.texcoords[tc[0] - 1][1] - model.texcoords[tc[2] - 1][1]),
+                    abs(model.texcoords[tc[1] - 1][1] - model.texcoords[tc[2] - 1][1])) > 0.3:
+                continue
+
+            tri1 = np.float32([[[(h - int(verts_img[face_vertices[0] - 1, 1])),
+                                    int(verts_img[face_vertices[0] - 1, 0])],
+                                [(h - int(verts_img[face_vertices[1] - 1, 1])),
+                                    int(verts_img[face_vertices[1] - 1, 0])],
+                                [(h - int(verts_img[face_vertices[2] - 1, 1])),
+                                    int(verts_img[face_vertices[2] - 1, 0])]]])
+            tri2 = np.float32(
+                [[[4096 - model.texcoords[tc[0] - 1][1] * 4096, model.texcoords[tc[0] - 1][0] * 4096],
+                    [4096 - model.texcoords[tc[1] - 1][1] * 4096, model.texcoords[tc[1] - 1][0] * 4096],
+                    [4096 - model.texcoords[tc[2] - 1][1] * 4096, model.texcoords[tc[2] - 1][0] * 4096]]])
+            r1 = cv2.boundingRect(tri1)
+            r2 = cv2.boundingRect(tri2)
+
+            tri1Cropped = []
+            tri2Cropped = []
+
+            for i in range(0, 3):
+                tri1Cropped.append(((tri1[0][i][1] - r1[1]), (tri1[0][i][0] - r1[0])))
+                tri2Cropped.append(((tri2[0][i][1] - r2[1]), (tri2[0][i][0] - r2[0])))
+
+            # Apply warpImage to small rectangular patches
+            img1Cropped = img[r1[0]:r1[0] + r1[2], r1[1]:r1[1] + r1[3]]
+            warpMat = cv2.getAffineTransform(np.float32(tri1Cropped), np.float32(tri2Cropped))
+
+            # Get mask by filling triangle
+            mask = np.zeros((r2[2], r2[3], 3), dtype=np.float32)
+            cv2.fillConvexPoly(mask, np.int32(tri2Cropped), (1.0, 1.0, 1.0), 16, 0)
+
+            # Apply the Affine Transform just found to the src image
+            img2Cropped = cv2.warpAffine(img1Cropped, warpMat, (r2[3], r2[2]), None, flags=cv2.INTER_LINEAR,
+                                            borderMode=cv2.BORDER_REFLECT_101)
+
+            # Apply mask to cropped region
+            img2Cropped = img2Cropped * mask
+
+            # Copy triangular region of the rectangular patch to the output image
+            texture[r2[0]:r2[0] + r2[2], r2[1]:r2[1] + r2[3]] = texture[r2[0]:r2[0] + r2[2],
+                                                                r2[1]:r2[1] + r2[3]] * ((1.0, 1.0, 1.0) - mask)
+
+            texture[r2[0]:r2[0] + r2[2], r2[1]:r2[1] + r2[3]] = texture[r2[0]:r2[0] + r2[2],
+                                                                r2[1]:r2[1] + r2[3]] + img2Cropped
+
+        return texture
+
 
         
     # ================================= inner functions ==================================
