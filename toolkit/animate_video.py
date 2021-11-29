@@ -38,9 +38,8 @@ def read_open_face_expressions(file='./test_data/src.csv'):
     exp_vec = np.zeros((52, frame_count))
 
     # Setting heuristic expressions
-    # exp_vec[0, :] += 1 # neutral
-    # exp_vec[9, :] += 1 # EyeOpen_L
-    # exp_vec[10, :]+= 1 # EyeOpen_R
+    exp_vec[9, :] += 1  # EyeOpen_L
+    exp_vec[10, :] += 1 # EyeOpen_R
 
     # Reading expressions from OpenFace data source file
     exp_vec[1, :] = np.array(expressions['AU45_r'])
@@ -95,7 +94,7 @@ exp_vecs = read_open_face_expressions()
 frame_count = exp_vecs.shape[1]
 
 # Generate al 52 blendshape meshes
-blendshape_meshes = []
+# blendshape_meshes = []
 # for i in range(52):
 #     print(f'Starting blendshape {i}')
 #     exp_vec = np.zeros(52)
@@ -124,61 +123,30 @@ blendshape_meshes = []
 #                                           flat_shading=False)
 #     cv2.imwrite(f'./demo_output/blendshapes/{i}.png', rend_tex)
 
-exp_neutral = np.zeros(52)
-exp_neutral[0]  = 1
-
-exp_2 = np.zeros(52)
-exp_2[2] = 1
-
-exp_20 = np.zeros(52)
-exp_20[20] = 1
-
-w_0 = exp_neutral
-w = 0.5 * exp_2 + exp_20
-w_exp = (w + (1 - np.sum(w))*w_0)
-
-verts = model.gen_full(id, w_exp)
-
-
-# transform to orthogonal camera coordinate
-mesh_tm = trimesh.Trimesh(vertices=verts.copy(),
-                          faces=fs_fitter.fv_indices_front - 1,
-                          process=False)
-mesh_tm.vertices[:, :2] = mesh_tm.vertices[:, 0:2] - np.array([src_img.shape[1] / 2, src_img.shape[0] / 2])
-mesh_tm.vertices = mesh_tm.vertices / src_img.shape[0] * 2
-
-mesh_tm.vertices[:, 0] -= mesh_tm.vertices[:, 0].mean()
-mesh_tm.vertices[:, 1] -= mesh_tm.vertices[:, 1].mean()
-mesh_tm.vertices[:, 2] = mesh_tm.vertices[:, 2] - mesh_tm.vertices[:, 2].mean() - 10.
-
-# render texture image and depth
-rend_depth, rend_tex = render_orthcam(mesh_tm, (1, 1),
-                                      rend_size=tuple(src_img.shape[:2]),
-                                      flat_shading=False)
-cv2.imwrite(f'./demo_output/blendshapes/slim_zijn_05.png', rend_tex)
+w_0 = np.zeros(52)
+w_0[0] = 1
 
 # # Animate blendshape meshes based on OpenFace recorded expression vectors
-# for i in range(frame_count):
-#     exp_vec = exp_vecs[:, i]
-#
-#     verts = blendshape_meshes[0] * 0 # Zero vec
-#     for j in range(52): # TODO: clean this up into one-liner
-#         verts += exp_vec[j] * blendshape_meshes[j]
-#         print(f'j: {j}, mean: {verts.mean()}')
-#
-#     # transform to orthogonal camera coordinate
-#     mesh_tm = trimesh.Trimesh(vertices=verts.copy(),
-#                               faces=fs_fitter.fv_indices_front - 1,
-#                               process=False)
-#     mesh_tm.vertices[:, :2] = mesh_tm.vertices[:, 0:2] - np.array([src_img.shape[1] / 2, src_img.shape[0] / 2])
-#     mesh_tm.vertices = mesh_tm.vertices / src_img.shape[0] * 2
-#
-#     mesh_tm.vertices[:, 0] -= mesh_tm.vertices[:, 0].mean()
-#     mesh_tm.vertices[:, 1] -= mesh_tm.vertices[:, 1].mean()
-#     mesh_tm.vertices[:, 2] -= mesh_tm.vertices[:, 2].mean()
-#
-#     # render texture image and depth
-#     rend_depth, rend_tex = render_orthcam(mesh_tm, (1, 1),
-#                                       rend_size = tuple(src_img.shape[:2]),
-#                                       flat_shading=False)
-#     cv2.imwrite(f'./demo_output/{i}.png', rend_tex)
+for i in range(frame_count):
+    w = exp_vecs[:, i]
+
+    w_exp = (w + (1 - np.sum(w))*w_0)
+    verts = model.gen_full(id, w_exp)
+
+    # transform to orthogonal camera coordinate
+    mesh_tm = trimesh.Trimesh(vertices=verts.copy(),
+                              faces=fs_fitter.fv_indices_front - 1,
+                              process=False)
+    mesh_tm.vertices[:, :2] = mesh_tm.vertices[:, 0:2] - np.array([src_img.shape[1] / 2, src_img.shape[0] / 2])
+    mesh_tm.vertices = mesh_tm.vertices / src_img.shape[0] * 2
+
+    mesh_tm.vertices[:, 0] -= mesh_tm.vertices[:, 0].mean()
+    mesh_tm.vertices[:, 1] -= mesh_tm.vertices[:, 1].mean()
+    mesh_tm.vertices[:, 2] -= mesh_tm.vertices[:, 2].mean() + 1.
+
+    # render texture image and depth
+    rend_depth, rend_tex = render_orthcam(mesh_tm, (1, 1),
+                                      rend_size = tuple(src_img.shape[:2]),
+                                      flat_shading=False)
+    cv2.imwrite(f'./demo_output/{i}.png', rend_tex)
+    print(f'Rendered frame {i}')
