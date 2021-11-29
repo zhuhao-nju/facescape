@@ -4,13 +4,15 @@ Bilinear model.
 """
 
 import numpy as np
+#import cupy as cp
 from src.mesh_obj import mesh_obj
 import timeit
 
 class facescape_bm(object):
     def __init__(self, filename):
-        bm_model = np.load(filename, allow_pickle = True) 
+        bm_model = np.load(filename, allow_pickle = True)
         self.shape_bm_core = bm_model['shape_bm_core'] # shape core
+        #self.shape_bm_core_cp = cp.array(self.shape_bm_core)
         self.color_bm_core = bm_model['color_bm_core'] # color core
         self.color_bm_mean = bm_model['color_bm_mean'] # color mean
 
@@ -55,19 +57,38 @@ class facescape_bm(object):
         if 'bottom_cand' in bm_model.files:
             self.bottom_cand = bm_model['bottom_cand'].tolist() # bottom cand
         
-        
+    def gen_full_cupy(self, id_vec, exp_vec):
+        """
+
+        :param id_vec:
+        :param exp_vec:
+        :return:
+        """
+
+        starttime = timeit.default_timer()
+        verts = self.shape_bm_core_cp.dot(id_vec).dot(exp_vec).reshape((-1, 3))
+        print('multiplication: ', timeit.default_timer() - starttime)
+
+        # mesh = mesh_obj()
+        # mesh.create(vertices=verts,
+        #             texcoords=self.texcoords,
+        #             faces_v=self.fv_indices,
+        #             faces_vt=self.ft_indices)
+        return verts
         
     # generate full mesh
-    def gen_full(self, id_vec, exp_vec):
-        starttime = timeit.default_timer()
-        verts = self.shape_bm_core.dot(id_vec).dot(exp_vec).reshape((-1, 3))
-        print("Matrix multiplication:", timeit.default_timer() - starttime)
-        mesh = mesh_obj()
-        mesh.create(vertices = verts, 
-                    texcoords = self.texcoords, 
-                    faces_v = self.fv_indices, 
-                    faces_vt = self.ft_indices)
-        return mesh
+    def gen_full(self, id_vec_np, exp_vec_np):
+
+
+        #starttime = timeit.default_timer()
+        verts = self.shape_bm_core.dot(id_vec_np).dot(exp_vec_np).reshape((-1, 3))
+        # print("Matrix multiplication:", timeit.default_timer() - starttime)
+        # mesh = mesh_obj()
+        # mesh.create(vertices = verts,
+        #             texcoords = self.texcoords,
+        #             faces_v = self.fv_indices,
+        #             faces_vt = self.ft_indices)
+        return verts
     
     # generate facial mesh
     def gen_face(self, id_vec, exp_vec):
@@ -88,7 +109,7 @@ class facescape_bm(object):
         mesh = mesh_obj()
         
         new_vert_colors = vert_colors[self.vc_dict_front][:,[2,1,0]]
-        new_vert_colors[(self.vc_dict_front == -1)] = np.array([0, 0, 0], dtype = np.float32)
+        new_vert_colors[(self.vc_dict_front == -1)] = cp.array([0, 0, 0], dtype = cp.float32)
         
         mesh.create(vertices = verts[self.v_indices_front], 
                     vert_colors = new_vert_colors,

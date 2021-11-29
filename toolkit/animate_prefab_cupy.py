@@ -3,8 +3,27 @@ from src.facescape_fitter import facescape_fitter
 import numpy as np
 from src.facescape_bm import facescape_bm
 import timeit
+import cupy as cp
+import csv
 
 np.random.seed(1000)
+
+## Read expression vec from file
+expression_file = './toolkit/test_data/src.csv'
+expressions = {}
+with open(expression_file) as f:
+    records = csv.DictReader(f)
+    for row in records:
+         for key in row.keys():
+            # strip first whitespace from keys
+            expkey = key[1:] if key[0] == ' ' else key
+
+            if expkey in expressions.keys():
+                expressions[expkey].append(float(row[key]))
+            else:
+                expressions[expkey] = [float(row[key])]
+
+# Map expressions from OpenFace AU to FaceScape
 
 
 # Initialize model and fitter
@@ -38,6 +57,24 @@ exp_vec[21] = 1
 
 # Generate and save animated head mesh
 starttime = timeit.default_timer()
-mesh = model.gen_full(id, exp_vec)
-print("Animating model:", timeit.default_timer() - starttime)
-mesh.export(output_dir="./demo_output/", file_name="bm_v16_result_full_matthijs_inferred_exp")
+id_cp = cp.array(id)
+exp_cp = cp.array(exp_vec)
+mesh = model.gen_full_cupy(id_cp, exp_cp)
+print("Animating model cupy:", timeit.default_timer() - starttime)
+#mesh.export(output_dir="./demo_output/", file_name="bm_v16_result_full_matthijs_inferred_exp")
+
+for i in range(10):
+    start_frame = timeit.default_timer()
+    starttime = timeit.default_timer()
+    exp_cp += 0.5
+    verts = model.gen_full_cupy(id_cp, exp_cp)
+    print(f"Animating model cupy {i}", timeit.default_timer() - starttime)
+    #mesh.export(output_dir="./demo_output/", file_name="bm_v16_result_full_matthijs_inferred_exp")
+    verts_np = cp.asnumpy(verts)
+    print(f"total time: {i}", timeit.default_timer() - start_frame)
+
+
+# # Generate and save animated head mesh
+# starttime = timeit.default_timer()
+# mesh = model.gen_full(id, exp_vec)
+# print("Animating model:", timeit.default_timer() - starttime)
