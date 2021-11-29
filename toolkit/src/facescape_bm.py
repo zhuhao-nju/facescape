@@ -10,6 +10,13 @@ class facescape_bm(object):
     def __init__(self, filename):
         bm_model = np.load(filename, allow_pickle = True) 
         self.shape_bm_core = bm_model['shape_bm_core'] # shape core
+        
+        # Calculating the residual converts the shape core into the residual representation
+        sub_tensor = np.stack((self.shape_bm_core[:,0,:],)*self.shape_bm_core.shape[1],1)
+        res_tensor = self.shape_bm_core - sub_tensor
+        res_tensor[:,0,:] = self.shape_bm_core[:,0,:]
+        self.shape_bm_core = res_tensor
+        
         self.color_bm_core = bm_model['color_bm_core'] # color core
         self.color_bm_mean = bm_model['color_bm_mean'] # color mean
 
