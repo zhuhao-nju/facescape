@@ -113,36 +113,6 @@ id, _, scale, trans, rot_vector = params
 exp_vecs = read_open_face_expressions()
 frame_count = exp_vecs.shape[1]
 
-# Generate al 52 blendshape meshes
-# blendshape_meshes = []
-# for i in range(52):
-#     print(f'Starting blendshape {i}')
-#     exp_vec = np.zeros(52)
-#     #exp_vec[0] = 1
-#     exp_vec[i] = 3
-#     verts = model.gen_full(id, exp_vec)
-#
-#     if i == 0:
-#         blendshape_meshes.append(verts)
-#     else:
-#         blendshape_meshes.append(verts - blendshape_meshes[0])
-#     # transform to orthogonal camera coordinate
-#     mesh_tm = trimesh.Trimesh(vertices=verts.copy(),
-#                               faces=fs_fitter.fv_indices_front - 1,
-#                               process=False)
-#     mesh_tm.vertices[:, :2] = mesh_tm.vertices[:, 0:2] - np.array([src_img.shape[1] / 2, src_img.shape[0] / 2])
-#     mesh_tm.vertices = mesh_tm.vertices / src_img.shape[0] * 2
-#
-#     mesh_tm.vertices[:, 0] -= mesh_tm.vertices[:, 0].mean()
-#     mesh_tm.vertices[:, 1] -= mesh_tm.vertices[:, 1].mean()
-#     mesh_tm.vertices[:, 2] = mesh_tm.vertices[:, 2] - mesh_tm.vertices[:, 2].mean() - 10.
-#
-#     # render texture image and depth
-#     rend_depth, rend_tex = render_orthcam(mesh_tm, (1, 1),
-#                                           rend_size=tuple(src_img.shape[:2]),
-#                                           flat_shading=False)
-#     cv2.imwrite(f'./demo_output/blendshapes/{i}.png', rend_tex)
-
 # Animate blendshape meshes based on OpenFace recorded expression vectors
 for i in range(frame_count):
     w_exp = exp_vecs[:, i]
@@ -158,5 +128,6 @@ for i in range(frame_count):
                                                           faces=mesh_full.faces_v - 1),
                                           Rt=Rt)
 
+    # Saving rendered image
     cv2.imwrite(f'./demo_output/{i}.png', image_full)
     print(f'Rendered frame {i}')
