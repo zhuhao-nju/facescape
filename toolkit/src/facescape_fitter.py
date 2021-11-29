@@ -66,59 +66,56 @@ class facescape_fitter(facescape_bm):
             kp2d = np.array([[p.x*fp_scale, src_img.shape[0] - p.y*fp_scale - 1] for p in pts.parts()])
         return kp2d
 
-    def fit_kp2d(self, kp2d, model):
-        
+    def fit_kp2d(self, kp2d):
+
         # ========== initialize ==========
         lm_pos = np.asarray(kp2d)
         id = self.id_mean
-        exp = np.array([1] + [0] * 51, dtype = np.float32)
+        exp = np.array([1] + [0] * 51, dtype=np.float32)
         rot_vector = np.array([0, 0, 0], dtype=np.double)
         trans = np.array([0, 0])
         scale = 1.
-        
+
         mesh_verts = self.shape_bm_core.dot(id).dot(exp).reshape((-1, 3))
         mesh_verts_img = self.project(mesh_verts, rot_vector, scale, trans)
-        
+
         lm_index = self.lm_list_v16
-        
+
         # ========== iterative optimize ==========
         for optimize_loop in range(4):
-            
+
             vertices_mean = np.mean(mesh_verts_img[lm_index], axis=0)
             vertices_2d = mesh_verts_img[lm_index] - vertices_mean
             lm_index_full = np.zeros(len(lm_index) * 3, dtype=int)
             for i in range(len(lm_index) * 3):
                 lm_index_full[i] = lm_index[i // 3] * 3 + i % 3
-            
+
             lm_mean = np.mean(lm_pos, axis=0)
             lm = lm_pos - lm_mean
             scale = np.sum(np.linalg.norm(lm, axis=1)) / np.sum(np.linalg.norm(vertices_2d, axis=1))
             trans = lm_mean - vertices_mean * scale
-            
+
             lm_core_tensor = self.shape_bm_core[lm_index_full]
-            
+
             lm_pos_3D = lm_core_tensor.dot(id).dot(exp).reshape((-1, 3))
-            scale, trans, rot_vector = self._optimize_rigid_pos_2d(scale, trans, rot_vector, 
-                                                                lm_pos_3D, lm_pos)
-            id = self._optimize_identity_2d(scale, trans, rot_vector, id, exp, 
-                                    lm_core_tensor, lm_pos, prior_weight=1)
+            scale, trans, rot_vector = self._optimize_rigid_pos_2d(scale, trans, rot_vector,
+                                                                   lm_pos_3D, lm_pos)
+            id = self._optimize_identity_2d(scale, trans, rot_vector, id, exp,
+                                            lm_core_tensor, lm_pos, prior_weight=1)
             exp = self._optimize_expression_2d(scale, trans, rot_vector, id, exp,
-                                       lm_core_tensor, lm_pos, prior_weight=1)
+                                               lm_core_tensor, lm_pos, prior_weight=1)
             mesh_verts = self.shape_bm_core.dot(id).dot(exp).reshape((-1, 3))
             mesh_verts_img = self.project(mesh_verts, rot_vector, scale, trans)
-            
+
             lm_index = self._update_3d_lm_index(mesh_verts_img, lm_index)
-        
+
         # ========== make mesh ==========
         mesh = mesh_obj()
-        mesh.create(vertices = self.project(mesh_verts, rot_vector, scale, trans, keepz = True),
-                    faces_v = model.fv_indices,     # face vertices
-                    #faces_vn = ,    # face normals
-                    faces_vt = model.ft_indices,    # face texture coordinates
-                    )
-        
+        mesh.create(vertices=self.project(mesh_verts, rot_vector, scale, trans, keepz=True),
+                    faces_v=self.fv_indices_front)
+
         params = (id, exp, scale, trans, rot_vector)
-        
+
         return mesh, params
     
     
