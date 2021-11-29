@@ -92,6 +92,7 @@ def read_open_face_expressions(file='./test_data/src.csv'):
     exp_vec[9, :] += 1
     exp_vec[10, :] += 1
 
+    # The expression are relative to a neutral expression
     exp_vec[0, :] = 1
 
     return exp_vec
@@ -103,14 +104,10 @@ fs_fitter = facescape_fitter(fs_file = "./bilinear_model_v1.6/facescape_bm_v1.6_
                              kp2d_backend = 'dlib') # or 'face_alignment'
 
 # Generate generic, id-mean, model
-id = (np.random.random(50) - 0.5) * 0.1
-if id[0]>0:
-    id = -id
-
-src_img = cv2.imread("./test_data/expression.png")
-# kp2d = fs_fitter.detect_kp2d(src_img)  # extract 2D key points
-# _, params = fs_fitter.fit_kp2d(kp2d, model)  # fit model
-# id, exp, scale, trans, rot_vector = params
+src_img = cv2.imread("./test_data/matthijs_frontal.jpg")
+kp2d = fs_fitter.detect_kp2d(src_img)  # extract 2D key points
+_, params = fs_fitter.fit_kp2d(kp2d)  # fit model
+id, _, scale, trans, rot_vector = params
 
 # Read expressions from openFace recording
 exp_vecs = read_open_face_expressions()
@@ -155,7 +152,7 @@ for i in range(frame_count):
     # Render image
     Rt = np.array([[1, 0, 0, 0],
                    [0, -1, 0, 0],
-                   [0, 0, -1, 500]], dtype=np.float64)
+                   [0, 0, -1, 1000]], dtype=np.float64)
 
     depth_full, image_full = render_cvcam(trimesh.Trimesh(vertices=mesh_full.vertices,
                                                           faces=mesh_full.faces_v - 1),
