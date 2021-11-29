@@ -66,7 +66,7 @@ class facescape_fitter(facescape_bm):
             kp2d = np.array([[p.x*fp_scale, src_img.shape[0] - p.y*fp_scale - 1] for p in pts.parts()])
         return kp2d
 
-    def fit_kp2d(self, kp2d):
+    def fit_kp2d(self, kp2d, model):
 
         # ========== initialize ==========
         lm_pos = np.asarray(kp2d)
@@ -112,11 +112,15 @@ class facescape_fitter(facescape_bm):
         # ========== make mesh ==========
         mesh = mesh_obj()
         mesh.create(vertices=self.project(mesh_verts, rot_vector, scale, trans, keepz=True),
-                    faces_v=self.fv_indices_front)
+                    faces_v=model.fv_indices,  # face vertices
+                    # faces_vn = ,    # face normals
+                    faces_vt=model.ft_indices,  # face texture coordinates
+                    texcoords=model.texcoords
+                    )
 
         params = (id, exp, scale, trans, rot_vector)
 
-        return mesh, params
+        return mesh, params, mesh_verts_img
     
     
     # input is 68 x 3 numpy array or list
