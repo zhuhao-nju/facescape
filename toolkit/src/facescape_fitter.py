@@ -102,7 +102,7 @@ class facescape_fitter(facescape_bm):
                                                                 lm_pos_3D, lm_pos)
             id = self._optimize_identity_2d(scale, trans, rot_vector, id, exp, 
                                     lm_core_tensor, lm_pos, prior_weight=1)
-            exp = self._optimize_expression_2d(scale, trans, rot_vector, id, exp, 
+            exp = self._optimize_expression_2d(scale, trans, rot_vector, id, exp,
                                        lm_core_tensor, lm_pos, prior_weight=1)
             mesh_verts = self.shape_bm_core.dot(id).dot(exp).reshape((-1, 3))
             mesh_verts_img = self.project(mesh_verts, rot_vector, scale, trans)

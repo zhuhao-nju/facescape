@@ -37,9 +37,9 @@ def read_open_face_expressions(file='./test_data/src.csv'):
     frame_count = int(expressions['frame'][-1])
     exp_vec = np.zeros((52, frame_count))
 
-    # Setting heuristic expressions
-    exp_vec[9, :] += 1  # EyeOpen_L
-    exp_vec[10, :] += 1 # EyeOpen_R
+    # # # Setting heuristic expressions
+    # exp_vec[9, :] += 1  # EyeOpen_L
+    # exp_vec[10, :] += 1  # EyeOpen_R
 
     # Reading expressions from OpenFace data source file
     exp_vec[1, :] = np.array(expressions['AU45_r'])
@@ -70,6 +70,26 @@ def read_open_face_expressions(file='./test_data/src.csv'):
     exp_vec[46, :] = np.array(expressions['AU17_r'])
     exp_vec[50, :] = np.array(expressions['AU06_r'])
     exp_vec[51, :] = np.array(expressions['AU06_r'])
+
+    exp_vec *= 0.4
+
+    # Heuristically setting eye related vecs
+    exp_vec[3, :] *= 0
+    exp_vec[4, :] *= 0
+    exp_vec[5, :] *= 0
+    exp_vec[6, :] *= 0
+    exp_vec[7, :] *= 0
+    exp_vec[8, :] *= 0
+    exp_vec[9, :] *= 0
+    exp_vec[10, :] *= 0
+    exp_vec[11, :] *= 0
+    exp_vec[12, :] *= 0
+    exp_vec[13, :] *= 0
+    exp_vec[14, :] *= 0
+
+    # Opening eyes manually
+    exp_vec[9, :] += 2.5
+    exp_vec[10, :] += 2.5
 
     return exp_vec
 
