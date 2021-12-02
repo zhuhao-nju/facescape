@@ -78,8 +78,8 @@ Use the option '--heat_mesh False' if the heat mesh is not required. Use the opt
 
 The samples of the two data sets are shown:
 
-<img src="/figures/benchmark_eval.jpg" width="800">
+<img src="/figures/benchmark_data.jpg" width="800">
 
 The quantitative evaluations are plotted as:
 
-<img src="/figures/benchmark_data.jpg" width="800">
+<img src="/figures/benchmark_eval.jpg" width="800">
