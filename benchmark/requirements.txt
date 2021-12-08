@@ -1,0 +1,14 @@
+numpy
+opencv-python
+tqdm
+trimesh
+setuptools
+matplotlib
+scipy
+pyopengl
+pillow
+pyzmq
+pyyaml
+pyrender
+rtree
+scikit-image

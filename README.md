@@ -1,32 +1,30 @@
 # FaceScape
 
-*FaceScape* provides large-scale high-quality 3D face datasets, parametric models, docs and toolkits about 3D face related technology. [[CVPR2020 paper]](https://openaccess.thecvf.com/content_CVPR_2020/papers/Yang_FaceScape_A_Large-Scale_High_Quality_3D_Face_Dataset_and_Detailed_CVPR_2020_paper.pdf) &nbsp;&nbsp; [[supplemetary]](https://openaccess.thecvf.com/content_CVPR_2020/supplemental/Yang_FaceScape_A_Large-Scale_CVPR_2020_supplemental.zip)
+*FaceScape* provides large-scale high-quality 3D face datasets, parametric models, docs and toolkits about 3D face related technology. [[CVPR2020 paper]](https://openaccess.thecvf.com/content_CVPR_2020/papers/Yang_FaceScape_A_Large-Scale_High_Quality_3D_Face_Dataset_and_Detailed_CVPR_2020_paper.pdf) &nbsp;&nbsp;[[extended arXiv Report]](https://arxiv.org/pdf/2111.01082.pdf) &nbsp;&nbsp; [[supplementary]](https://openaccess.thecvf.com/content_CVPR_2020/supplemental/Yang_FaceScape_A_Large-Scale_CVPR_2020_supplemental.zip)
 
 Our latest progress will be updated to this repository constantly - *[latest update: 2021/8/16]*
 
 ### Data
 
 The data can be downloaded in https://facescape.nju.edu.cn/ after requesting a license key.  
-*New:* Share link on google drive is available after requesting license key, view [here](https://github.com/zhuhao-nju/facescape/blob/master/doc/facescape_googledrive.md) for detail.  
+*New:* Share link on Google Drive is available after requesting license key, view [here](https://github.com/zhuhao-nju/facescape/blob/master/doc/facescape_googledrive.md) for detail.  
 *New:* The bilinear model ver1.6 can be downloaded without requesting a license key, view [here](https://github.com/zhuhao-nju/facescape/blob/master/doc/external_link_fsbm.md) for the link and rules.
 
-<img src="/figures/facescape_all.jpg" width="800"> 
+<img src="/figures/facescape_all.jpg" width="800">
 
 The available sources include:
 
-| Item              | Description                                                         | Quantity                                         | Quality |
+| Item (Docs)              | Description                                                         | Quantity                                         | Quality |
 |-------------------|---------------------------------------------------------------------|------------------------------------------------|---------|
-| TU models | Topologically uniformed 3D face models <br>with displacement map and texture map. | **16940 models** <br>(847 id × 20 exp)       |  Detailed geometry, <br>4K dp/tex maps |
-| Multi-view data | Multi-view images, camera paramters <br>and coresponding 3D face mesh. | **>400k images** <br>(359 id × 20 exp <br>× ≈60 view)|  4M~12M pixels       |
-| Bilinear model | The statistical model to transform the base <br>shape into the vector space.  |   4 for different settings      |    Only for base shape.    |
-| Info list         | Gender / age of the subjects.                                        |   847 subjects   |    --    |
- 
+| [TU models](/doc/doc_tu_model.md) | Topologically uniformed 3D face models <br>with displacement map and texture map. | **16940 models** <br>(847 id × 20 exp)       |  Detailed geometry, <br>4K dp/tex maps |
+| [Multi-view data](/doc/doc_mview_model.md) | Multi-view images, camera parameters <br>and corresponding 3D face mesh. | **>400k images** <br>(359 id × 20 exp <br>× ≈60 view)|  4M~12M pixels       |
+| [Bilinear model](/doc/doc_bilinear_model.md) | The statistical model to transform the base <br>shape into the vector space.  |   4 for different settings      |    Only for base shape.    |
+| [Info list](/doc/doc_tu_model.md)         | Gender / age of the subjects.                                        |   847 subjects   |    --    |
+
 The datasets are only released for non-commercial research use.  As facial data involves the privacy of participants, we use strict license terms to ensure that the dataset is not abused.
 
-### Docs
-* [doc of TU models](/doc/doc_tu_model.md).
-* [doc of Multi-view models](/doc/doc_mview_model.md).
-* [doc of Bilinear models](/doc/doc_bilinear_model.md).
+### Benchmark for SVFR
+We present a benchmark to evaluate the accuracy of single-view face 3D reconstruction (SVFR) methods, view [here](/benchmark/README.md) for the details.
 
 ### ToolKit
 Start using python toolkit [here](/toolkit/README.md), the demos include:
@@ -36,15 +34,16 @@ Start using python toolkit [here](/toolkit/README.md), the demos include:
 * [multi-view-project](https://nbviewer.jupyter.org/github/zhuhao-nju/facescape/blob/master/toolkit/demo_mview_projection.ipynb) - Project 3D models to multi-view images.
 * [landmark](https://nbviewer.jupyter.org/github/zhuhao-nju/facescape/blob/master/toolkit/demo_landmark.ipynb) - extract landmarks using predefined vertex index.
 * [facial_mask](https://nbviewer.jupyter.org/github/zhuhao-nju/facescape/blob/master/toolkit/demo_mask.ipynb) - extract facial region from the full head TU-models.
-* [render](https://nbviewer.jupyter.org/github/zhuhao-nju/facescape/blob/master/toolkit/demo_render.ipynb) - render TU-models to color images and depth map. 
+* [render](https://nbviewer.jupyter.org/github/zhuhao-nju/facescape/blob/master/toolkit/demo_render.ipynb) - render TU-models to color images and depth map.
 * [alignment](https://nbviewer.jupyter.org/github/zhuhao-nju/facescape/blob/master/toolkit/demo_align.ipynb) - align all the multi-view models.
 * [symmetry](https://nbviewer.jupyter.org/github/zhuhao-nju/facescape/blob/master/toolkit/demo_symmetry.ipynb) - get the correspondence of the vertices on TU-models from left side to right side.
- 
+
 ### Code
 The code of detailed riggable 3D face prediction in our paper is released [here](https://github.com/yanght321/Detailed3DFace.git).
 
 ### ChangeLog
-
+* **2021/12/2** <br>
+Benchmark to evaluate single-view face reconstruction is available, view [here](https://github.com/zhuhao-nju/facescape/blob/master/benchmark/README.md) for detail.
 * **2021/8/16** <br>
 Share link on google drive is available after requesting license key, view [here](https://github.com/zhuhao-nju/facescape/blob/master/doc/facescape_googledrive.md) for detail.
 * **2021/5/13** <br>
@@ -62,7 +61,7 @@ Bilinear model is updated to ver 1.3, with vertex-color added.<br>
 Info list including gender and age is available in download page.<br>
 Tools and samples are added to this repository.<br>
 * **2020/7/7** <br>
-Bilinear model is updated to ver 1.2. 
+Bilinear model is updated to ver 1.2.
 * **2020/6/13** <br>
 The [website]((https://facescape.nju.edu.cn/)) of FaceScape is online. <br>3D models and bilinear models are available for download.<br>
 * **2020/3/31** <br>
@@ -70,6 +69,7 @@ The pre-print paper is available on [arXiv](https://arxiv.org/abs/2003.13989).<b
 
 ### Bibtex
 If you find this project helpful to your research, please consider citing:
+
 ```
 @InProceedings{yang2020facescape,
   author = {Yang, Haotian and Zhu, Hao and Wang, Yanru and Huang, Mingkai and Shen, Qiu and Yang, Ruigang and Cao, Xun},
@@ -78,6 +78,16 @@ If you find this project helpful to your research, please consider citing:
   month = {June},
   year = {2020},
   page = {601--610}}
+```
+
+Exntended version with the benchmark:
+```
+@article{zhu2021facescape,
+  title={FaceScape: 3D Facial Dataset and Benchmark for Single-View 3D Face Reconstruction},
+  author={Zhu, Hao and Yang, Haotian and Guo, Longwei and Zhang, Yidi and Wang, Yanru and Huang, Mingkai and Shen, Qiu and Yang, Ruigang and Cao, Xun},
+  journal={arXiv preprint arXiv:2111.01082},
+  year={2021}
+}
 ```
 
 ### Acknowledge
