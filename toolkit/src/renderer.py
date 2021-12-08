@@ -21,10 +21,7 @@ def render_glcam(model_in, # model name or trimesh
         mesh = trimesh.load(model_in, process=False)
     else:
         mesh = model_in.copy()
-
-    print('hgggggggggggggg')
-    print(model_in.visual.vertex_colors)
-    pr_mesh = pyrender.Mesh.from_trimesh(model_in)
+    pr_mesh = pyrender.Mesh.from_trimesh(mesh)
 
     # Scene creation
     scene = pyrender.Scene()

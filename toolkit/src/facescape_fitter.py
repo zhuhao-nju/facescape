@@ -29,7 +29,7 @@ class facescape_fitter(facescape_bm):
         if self.kp2d_backend == 'face_alignment':
             import face_alignment
             self.detector = face_alignment.FaceAlignment(face_alignment.LandmarksType._2D, 
-                                                         flip_input=False, device='cpu')
+                                                         flip_input=False)
         elif self.kp2d_backend == 'dlib':
             import dlib
             if os.path.isfile(dlib_kp2d_model) is False:
@@ -99,11 +99,11 @@ class facescape_fitter(facescape_bm):
 
             lm_pos_3D = lm_core_tensor.dot(id).dot(exp).reshape((-1, 3))
             scale, trans, rot_vector = self._optimize_rigid_pos_2d(scale, trans, rot_vector,
-                                                                   lm_pos_3D, lm_pos)
+                                                                lm_pos_3D, lm_pos)
             id = self._optimize_identity_2d(scale, trans, rot_vector, id, exp,
-                                            lm_core_tensor, lm_pos, prior_weight=1)
+                                    lm_core_tensor, lm_pos, prior_weight=1)
             exp = self._optimize_expression_2d(scale, trans, rot_vector, id, exp,
-                                               lm_core_tensor, lm_pos, prior_weight=1)
+                                       lm_core_tensor, lm_pos, prior_weight=1)
             mesh_verts = self.shape_bm_core.dot(id).dot(exp).reshape((-1, 3))
             mesh_verts_img = self.project(mesh_verts, rot_vector, scale, trans)
 
@@ -112,10 +112,9 @@ class facescape_fitter(facescape_bm):
         # ========== make mesh ==========
         mesh = mesh_obj()
         mesh.create(vertices=self.project(mesh_verts, rot_vector, scale, trans, keepz=True),
-                    faces_v=model.fv_indices,  # face vertices
-                    # faces_vn = ,    # face normals
+                    faces_v=model.fv_indices,   # face vertices
                     faces_vt=model.ft_indices,  # face texture coordinates
-                    texcoords=model.texcoords
+                    texcoords=model.texcoords   # uv coordinates
                     )
 
         params = (id, exp, scale, trans, rot_vector)
@@ -167,7 +166,16 @@ class facescape_fitter(facescape_bm):
         return mesh, params
 
     def get_texture(self, img, verts_img, mesh, model):
-        """ Generates texture map from face image  """
+        """ Generates texture map from face image. This code is adapted to work with the v1.6 model
+        source: https://github.com/yanght321/Detailed3DFace/
+
+        :param img: source image
+        :param verts_img: as returned by fit_kp2d
+        :param mesh: as returned by fit_kp2d
+        :param model: bilinear model to use
+        :return: unwrapped texture image
+        """
+
         h, w, _ = img.shape
 
         texture = np.zeros((4096, 4096, 3))

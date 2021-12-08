@@ -4,7 +4,6 @@ Bilinear model.
 """
 
 import numpy as np
-#import cupy as cp
 from src.mesh_obj import mesh_obj
 import timeit
 
@@ -62,26 +61,7 @@ class facescape_bm(object):
             self.contour_line_left = bm_model['contour_line_left'].tolist() # contour line - left
         if 'bottom_cand' in bm_model.files:
             self.bottom_cand = bm_model['bottom_cand'].tolist() # bottom cand
-        
-    def gen_full_cupy(self, id_vec, exp_vec):
-        """
 
-        :param id_vec:
-        :param exp_vec:
-        :return:
-        """
-
-        starttime = timeit.default_timer()
-        verts = self.shape_bm_core_cp.dot(id_vec).dot(exp_vec).reshape((-1, 3))
-        print('multiplication: ', timeit.default_timer() - starttime)
-
-        # mesh = mesh_obj()
-        # mesh.create(vertices=verts,
-        #             texcoords=self.texcoords,
-        #             faces_v=self.fv_indices,
-        #             faces_vt=self.ft_indices)
-        return verts
-        
     # generate full mesh
     def gen_full(self, id_vec, exp_vec):
         verts = self.shape_bm_core.dot(id_vec).dot(exp_vec).reshape((-1, 3))
@@ -111,7 +91,7 @@ class facescape_bm(object):
         mesh = mesh_obj()
         
         new_vert_colors = vert_colors[self.vc_dict_front][:,[2,1,0]]
-        new_vert_colors[(self.vc_dict_front == -1)] = cp.array([0, 0, 0], dtype = cp.float32)
+        new_vert_colors[(self.vc_dict_front == -1)] = np.array([0, 0, 0], dtype = np.float32)
         
         mesh.create(vertices = verts[self.v_indices_front], 
                     vert_colors = new_vert_colors,
