@@ -5,7 +5,6 @@ Bilinear model.
 
 import numpy as np
 from src.mesh_obj import mesh_obj
-import timeit
 
 class facescape_bm(object):
     def __init__(self, filename):
