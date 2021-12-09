@@ -66,7 +66,7 @@ class facescape_fitter(facescape_bm):
             kp2d = np.array([[p.x*fp_scale, src_img.shape[0] - p.y*fp_scale - 1] for p in pts.parts()])
         return kp2d
 
-    def fit_kp2d(self, kp2d, model):
+    def fit_kp2d(self, kp2d):
 
         # ========== initialize ==========
         lm_pos = np.asarray(kp2d)
@@ -112,9 +112,9 @@ class facescape_fitter(facescape_bm):
         # ========== make mesh ==========
         mesh = mesh_obj()
         mesh.create(vertices=self.project(mesh_verts, rot_vector, scale, trans, keepz=True),
-                    faces_v=model.fv_indices,   # face vertices
-                    faces_vt=model.ft_indices,  # face texture coordinates
-                    texcoords=model.texcoords   # uv coordinates
+                    faces_v=self.fv_indices,   # face vertices
+                    faces_vt=self.ft_indices,  # face texture coordinates
+                    texcoords=self.texcoords   # uv coordinates
                     )
 
         params = (id, exp, scale, trans, rot_vector)
@@ -165,14 +165,13 @@ class facescape_fitter(facescape_bm):
 
         return mesh, params
 
-    def get_texture(self, img, verts_img, mesh, model):
+    def get_texture(self, img, verts_img, mesh):
         """ Generates texture map from face image. This code is adapted to work with the v1.6 model
         source: https://github.com/yanght321/Detailed3DFace/
 
         :param img: source image
         :param verts_img: as returned by fit_kp2d
         :param mesh: as returned by fit_kp2d
-        :param model: bilinear model to use
         :return: unwrapped texture image
         """
 
@@ -183,12 +182,12 @@ class facescape_fitter(facescape_bm):
         for face in mesh.faces:
             face_vertices, face_normals, tc, material = face
 
-            if max(abs(model.texcoords[tc[0] - 1][0] - model.texcoords[tc[1] - 1][0]),
-                    abs(model.texcoords[tc[0] - 1][0] - model.texcoords[tc[2] - 1][0]),
-                    abs(model.texcoords[tc[1] - 1][0] - model.texcoords[tc[2] - 1][0]),
-                    abs(model.texcoords[tc[0] - 1][1] - model.texcoords[tc[1] - 1][1]),
-                    abs(model.texcoords[tc[0] - 1][1] - model.texcoords[tc[2] - 1][1]),
-                    abs(model.texcoords[tc[1] - 1][1] - model.texcoords[tc[2] - 1][1])) > 0.3:
+            if max(abs(self.texcoords[tc[0] - 1][0] - self.texcoords[tc[1] - 1][0]),
+                    abs(self.texcoords[tc[0] - 1][0] - self.texcoords[tc[2] - 1][0]),
+                    abs(self.texcoords[tc[1] - 1][0] - self.texcoords[tc[2] - 1][0]),
+                    abs(self.texcoords[tc[0] - 1][1] - self.texcoords[tc[1] - 1][1]),
+                    abs(self.texcoords[tc[0] - 1][1] - self.texcoords[tc[2] - 1][1]),
+                    abs(self.texcoords[tc[1] - 1][1] - self.texcoords[tc[2] - 1][1])) > 0.3:
                 continue
 
             tri1 = np.float32([[[(h - int(verts_img[face_vertices[0] - 1, 1])),
@@ -198,9 +197,9 @@ class facescape_fitter(facescape_bm):
                                 [(h - int(verts_img[face_vertices[2] - 1, 1])),
                                     int(verts_img[face_vertices[2] - 1, 0])]]])
             tri2 = np.float32(
-                [[[4096 - model.texcoords[tc[0] - 1][1] * 4096, model.texcoords[tc[0] - 1][0] * 4096],
-                    [4096 - model.texcoords[tc[1] - 1][1] * 4096, model.texcoords[tc[1] - 1][0] * 4096],
-                    [4096 - model.texcoords[tc[2] - 1][1] * 4096, model.texcoords[tc[2] - 1][0] * 4096]]])
+                [[[4096 - self.texcoords[tc[0] - 1][1] * 4096, self.texcoords[tc[0] - 1][0] * 4096],
+                    [4096 - self.texcoords[tc[1] - 1][1] * 4096, self.texcoords[tc[1] - 1][0] * 4096],
+                    [4096 - self.texcoords[tc[2] - 1][1] * 4096, self.texcoords[tc[2] - 1][0] * 4096]]])
             r1 = cv2.boundingRect(tri1)
             r2 = cv2.boundingRect(tri2)
 
