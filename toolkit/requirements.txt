@@ -1,9 +1,11 @@
 # python requirements
+cmake
 numpy
+dlib
 opencv-python
 Pillow
 scipy
 trimesh
 pyrender
 openmesh
-
+sklearn

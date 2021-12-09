@@ -95,18 +95,18 @@ class mesh_obj:
             self.adjacent_list = list(map(list, adjacent_list))
         return self.adjacent_list[index]
     
-    def export(self, tgt_dirname, enable_vc = False, enable_vt = False):
-        
-        if tgt_dirname[-4:] != '.obj' and tgt_dirname[-4:] != '.OBJ':
-            print("ERROR: suffix to save should be '.obj' or '.OBJ': %s" % tgt_dirname)
-            return False
-        tgt_dir = os.path.dirname(tgt_dirname)
-        filename = os.path.basename(tgt_dirname)
+    def export(self, output_dir, file_name, texture_name=None, enable_vc=False, enable_vt=True):
+
+        tgt_dir = os.path.dirname(output_dir)
+        output_file = os.path.join(output_dir, file_name) + '.obj'
+        mtl_file = os.path.join(output_dir, file_name) + '.mtl'
         
         if len(tgt_dir) != 0:
-            os.makedirs(tgt_dir, exist_ok = True)
+            os.makedirs(tgt_dir, exist_ok=True)
 
-        with open(tgt_dirname, "w") as f:
+        with open(output_file, "w") as f:
+            if texture_name is not None:
+                f.write('mtllib ./%s.mtl\n' % file_name)
             if enable_vc is True:
                 for idx, vert in enumerate(self.vertices):
                     f.write("v %f %f %f %f %f %f\n" % (vert[0], vert[1], vert[2],
@@ -119,6 +119,8 @@ class mesh_obj:
             if enable_vt is True:
                 for tc in self.texcoords:
                     f.write("vt %.6f %.6f\n" % (tc[0], tc[1]))
+                if texture_name is not None:
+                    f.write('usemtl material_0\n')
                 for face in self.faces:
                     face_vertices, face_normals, face_texture_coords, material = face
                     f.write("f %d/%d %d/%d %d/%d\n" % (face_vertices[0], face_texture_coords[0], 
@@ -128,7 +130,13 @@ class mesh_obj:
                 for face in self.faces:
                     face_vertices, face_normals, face_texture_coords, material = face
                     f.write("f %d %d %d\n" % (face_vertices[0], face_vertices[1], face_vertices[2]))
-    
+
+        if texture_name is not None:
+            with open(mtl_file, 'w') as f:
+                f.write('newmtl material_0\nKa 0.200000 0.200000 0.200000\nKd 0.000000 0.000000 0.000000\n')
+                f.write(
+                    'Ks 1.000000 1.000000 1.000000\nTr 0.000000\nillum 2\nNs 0.000000\nmap_Kd %s' % texture_name)
+
     def read_mtl(self, filename):
         contents = {}
         mtl = None

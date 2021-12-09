@@ -8,15 +8,15 @@ from src.mesh_obj import mesh_obj
 
 class facescape_bm(object):
     def __init__(self, filename):
-        bm_model = np.load(filename, allow_pickle = True) 
-        self.shape_bm_core = bm_model['shape_bm_core'] # shape core
-        
+        bm_model = np.load(filename, allow_pickle=True)
+        self.shape_bm_core = bm_model['shape_bm_core']  # shape core
+
         # Calculating the residual converts the shape core into the residual representation
-        sub_tensor = np.stack((self.shape_bm_core[:,0,:],)*self.shape_bm_core.shape[1],1)
+        sub_tensor = np.stack((self.shape_bm_core[:, 0, :],) * self.shape_bm_core.shape[1], 1)
         res_tensor = self.shape_bm_core - sub_tensor
-        res_tensor[:,0,:] = self.shape_bm_core[:,0,:]
+        res_tensor[:, 0, :] = self.shape_bm_core[:, 0, :]
         self.shape_bm_core = res_tensor
-        
+
         self.color_bm_core = bm_model['color_bm_core'] # color core
         self.color_bm_mean = bm_model['color_bm_mean'] # color mean
 
@@ -60,16 +60,14 @@ class facescape_bm(object):
             self.contour_line_left = bm_model['contour_line_left'].tolist() # contour line - left
         if 'bottom_cand' in bm_model.files:
             self.bottom_cand = bm_model['bottom_cand'].tolist() # bottom cand
-        
-        
-        
+
     # generate full mesh
     def gen_full(self, id_vec, exp_vec):
         verts = self.shape_bm_core.dot(id_vec).dot(exp_vec).reshape((-1, 3))
         mesh = mesh_obj()
-        mesh.create(vertices = verts, 
-                    texcoords = self.texcoords, 
-                    faces_v = self.fv_indices, 
+        mesh.create(vertices = verts,
+                    texcoords = self.texcoords,
+                    faces_v = self.fv_indices,
                     faces_vt = self.ft_indices)
         return mesh
     
