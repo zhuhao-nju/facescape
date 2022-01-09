@@ -40,7 +40,6 @@ The links below use an external jupyter renderer, because github often fails to 
 * [render](https://nbviewer.jupyter.org/github/zhuhao-nju/facescape/blob/master/toolkit/demo_render.ipynb) - render TU-models to color images and depth map. 
 * [alignment](https://nbviewer.jupyter.org/github/zhuhao-nju/facescape/blob/master/toolkit/demo_align.ipynb) - align all the multi-view models.
 * [symmetry](https://nbviewer.jupyter.org/github/zhuhao-nju/facescape/blob/master/toolkit/demo_symmetry.ipynb) - get the correspondence of the vertices on TU-models from left side to right side.
-* rigging (Coming soon) - animate the TU-models to an simple animation with changing experssions.
- 
+* [rig](https://nbviewer.jupyter.org/github/zhuhao-nju/facescape/blob/master/toolkit/demo_rig.ipynb) - rig 20 expressions to 52 expressions.
 
 

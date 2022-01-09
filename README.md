@@ -37,6 +37,8 @@ Start using python toolkit [here](/toolkit/README.md), the demos include:
 * [render](https://nbviewer.jupyter.org/github/zhuhao-nju/facescape/blob/master/toolkit/demo_render.ipynb) - render TU-models to color images and depth map.
 * [alignment](https://nbviewer.jupyter.org/github/zhuhao-nju/facescape/blob/master/toolkit/demo_align.ipynb) - align all the multi-view models.
 * [symmetry](https://nbviewer.jupyter.org/github/zhuhao-nju/facescape/blob/master/toolkit/demo_symmetry.ipynb) - get the correspondence of the vertices on TU-models from left side to right side.
+* [rig](https://nbviewer.jupyter.org/github/zhuhao-nju/facescape/blob/master/toolkit/demo_rig.ipynb) - rig 20 expressions to 52 expressions.
+
 
 ### Code
 The code of detailed riggable 3D face prediction in our paper is released [here](https://github.com/yanght321/Detailed3DFace.git).
