@@ -92,7 +92,7 @@ def rig_20to52(id_dir, tplt_dir, params_file, mesh_ver = "1.0"):
     faces_v16 = rig_params["faces_v16"]
 
     templates = []
-    template_neutral = trimesh.load_mesh("./data/sym_subdiv/Neutral.obj", 
+    template_neutral = trimesh.load_mesh(tplt_dir + "Neutral.obj", 
                                          maintain_order=True, process = False)
     templates.append(template_neutral)
 
