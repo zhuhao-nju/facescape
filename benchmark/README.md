@@ -83,3 +83,7 @@ The samples of the two data sets are shown:
 The quantitative evaluations are plotted as:
 
 <img src="/figures/benchmark_eval.jpg" width="800">
+
+Please note:
+* The ground-truth shape for evaluation was normalized in scale. Specifically, all the pupil distances are scaled to 62.85mm, which is a statistical mean value of pupil distance.
+* The main difference to [NoW Benchmark](https://ringnet.is.tue.mpg.de/challenge.html) is that our evaluation takes predicted pose and expression into account, while NoW benchmark mainly evaluates neutralized face, excluding the influence of facial expressions and poses.
