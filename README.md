@@ -40,10 +40,37 @@ Start using python toolkit [here](/toolkit/README.md), the demos include:
 * [rig](https://nbviewer.jupyter.org/github/zhuhao-nju/facescape/blob/master/toolkit/demo_rig.ipynb) - rig 20 expressions to 52 expressions.
 
 
-### Code
-The code of detailed riggable 3D face prediction in our paper is released [here](https://github.com/yanght321/Detailed3DFace.git).
+### Open-Source Projects using FaceScape
+
+**[MoFaNeRF: Morphable Facial Neural Radiance Field (ECCV 2022)](https://github.com/zhuhao-nju/mofanerf)**  
+*Yiyu Zhuang\*, Hao Zhu\*, Xusen Sun, Xun Cao*
+
+**[Structure-aware Editable Morphable Model for 3D Facial Detail Animation and Manipulation (ECCV2022)](https://github.com/gerwang/facial-detail-manipulation)**  
+*Jingwang Ling, Zhibo Wang, Ming Lu, Quan Wang, Chen Qian, Feng Xu*
+
+**[HeadNeRF: A Real-Time NeRF-Based Parametric Head Model (CVPR2022)](https://github.com/CrisHY1995/headnerf)**  
+*Yang Hong, Bo Peng, Haiyao Xiao, Ligang Liu, Juyong Zhang*
+
+**[ImFace: A Nonlinear 3D Morphable Face Model with Implicit Neural Representations (CVPR2022)](https://github.com/MingwuZheng/ImFace)**  
+*Mingwu Zheng, Hongyu Yang, Di Huang, Liming Chen*
+
+**[Detailed Facial Geometry Recovery from Multi-view Images by Learning an Implicit Function (AAAI 2022)](https://github.com/zhuhao-nju/mvfr)**  
+*Yunze Xiao\*, Hao Zhu\*, Haotian Yang, Zhengyu Diao, Xiangju Lu, Xun Cao*
+
+**[Deep Unsupervised 3D SfM Face Reconstruction Based on Massive Landmark Bundle Adjustment (ACM MM 2021)](https://github.com/BoomStarcuc/3DSfMFaceReconstruction)**  
+*Yuxing Wang, Yawen Lu, Zhihua Xie, Guoyu Lu*
+
+**[Detailed Riggable 3D face Prediction Code of FaceScape (CVPR2020)](https://github.com/yanght321/Detailed3DFace.git)**  
+*Haotian Yang\*, Hao Zhu\*, Yanru Wang, Mingkai Huang, Qiu Shen, Ruigang Yang, Xun Cao*
+
+
 
 ### ChangeLog
+
+* **2022/9/9** <br>
+One section is added to introduce open-source projects that uses FaceScape data or models, and will be continuously updated.
+* **2022/7/26** <br>
+The data for training and testing [MoFaNeRF](https://github.com/zhuhao-nju/mofanerf) is added to the [download page](https://facescape.nju.edu.cn/).
 * **2021/12/2** <br>
 Benchmark to evaluate single-view face reconstruction is available, view [here](https://github.com/zhuhao-nju/facescape/blob/master/benchmark/README.md) for detail.
 * **2021/8/16** <br>
