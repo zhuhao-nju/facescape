@@ -2,15 +2,7 @@
 
 *FaceScape* provides large-scale high-quality 3D face datasets, parametric models, docs and toolkits about 3D face related technology. [[CVPR2020 paper]](https://openaccess.thecvf.com/content_CVPR_2020/papers/Yang_FaceScape_A_Large-Scale_High_Quality_3D_Face_Dataset_and_Detailed_CVPR_2020_paper.pdf) &nbsp;&nbsp;[[extended arXiv Report]](https://arxiv.org/pdf/2111.01082.pdf) &nbsp;&nbsp; [[supplementary]](https://openaccess.thecvf.com/content_CVPR_2020/supplemental/Yang_FaceScape_A_Large-Scale_CVPR_2020_supplemental.zip)
 
-```diff
-- Notification about the maintenance of the downloading website -
-The download website (https://facescape.nju.edu.cn/) is temporally closed from 2022/10/1 to 2022/10/24 due to the maintenance of the campus network.
-For the users who requested the license key before, please email facescape@outlook.com to request a temporary downloading link on Google Drive.
-For the users who didn't request the license key before, please sign the agreement at *https://github.com/zhuhao-nju/facescape/blob/master/doc/License_Agreement.pdf* and send the scanned copy to facescape@outlook.com to obtain the downloading link.
-Thanks for your cooperation!
-```
-
-Our latest progress will be updated to this repository constantly - *[latest update: 2021/8/16]*
+Our latest progress will be updated to this repository constantly - *[latest update: 2022/9/9]*
 
 ### Data
 
