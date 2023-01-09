@@ -76,9 +76,7 @@ class facescape_bm(object):
         verts = self.shape_bm_core.dot(id_vec).dot(exp_vec).reshape((-1, 3))
         mesh = mesh_obj()
         mesh.create(vertices = verts[self.v_indices_front], 
-                    texcoords = self.texcoords[self.v_indices_front], 
-                    faces_v = self.fv_indices_front, 
-                    faces_vt = self.ft_indices_front)
+                    faces_v = self.fv_indices_front)
         return mesh
     
     # generate facial mesh with vertex color
@@ -94,8 +92,6 @@ class facescape_bm(object):
         
         mesh.create(vertices = verts[self.v_indices_front], 
                     vert_colors = new_vert_colors,
-                    texcoords = self.texcoords[self.v_indices_front], 
-                    faces_v = self.fv_indices_front, 
-                    faces_vt = self.ft_indices_front)
+                    faces_v = self.fv_indices_front)
         return mesh
 
