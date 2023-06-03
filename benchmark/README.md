@@ -41,7 +41,7 @@ cd code
 python export.py
 ```
 
-The heat meshes have been generated where the distance error is visualized as vertex color. The heat meshes of 14 reported methods can be downloaded from [NJU Drive](https://box.nju.edu.cn/f/4433cb1951e14321b042/?dl=1)) or [Google Drive](https://drive.google.com/file/d/1BHL83xC09wnZw9aIzhQ2NPjjDoUYKThF/view?usp=sharing) (5.9 GB).
+The heat meshes have been generated where the distance error is visualized as vertex color. The heat meshes of 14 reported methods can be downloaded from [NJU Drive](https://box.nju.edu.cn/f/e2d174cc0bbe46b4b8db/?dl=1) or [Google Drive](https://drive.google.com/file/d/1BHL83xC09wnZw9aIzhQ2NPjjDoUYKThF/view?usp=sharing) (5.9 GB).
 
 ### Run Evaluation Code
 
