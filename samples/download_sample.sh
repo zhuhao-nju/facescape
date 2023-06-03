@@ -5,7 +5,7 @@ fi
 
 # download samples.tar.gz
 if [ ! -f ./samples.tar.gz ] ; then
-wget --no-check-certificate 'https://box.nju.edu.cn/f/b22709b2f4754dd981cb/?dl=1' -O ./samples.tar.gz
+wget --no-check-certificate 'https://box.nju.edu.cn/f/e33302f9b9ce4c7597d0/?dl=1' -O ./samples.tar.gz
 fi
 
 # extract files
