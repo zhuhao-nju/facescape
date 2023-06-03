@@ -7,7 +7,7 @@ fi
 # download
 if [ ! -f ./lab_pred/lab_pred.zip ] ; then
 mkdir lab_pred
-wget --no-check-certificate 'https://box.nju.edu.cn/f/d4e7d4df7b994fd5a63d/?dl=1' -O ./lab_pred/lab_pred.zip
+wget --no-check-certificate 'https://box.nju.edu.cn/f/144a0f838cbe45b9a439/?dl=1' -O ./lab_pred/lab_pred.zip
 fi
 
 # extract files
@@ -23,7 +23,7 @@ fi
 # download
 if [ ! -f ./wild_pred/wild_pred.zip ] ; then
 mkdir wild_pred
-wget --no-check-certificate 'https://box.nju.edu.cn/f/c474129c859f438db1fa/?dl=1' -O ./wild_pred/wild_pred.zip
+wget --no-check-certificate 'https://box.nju.edu.cn/f/0aa9a18215ee487b8239/?dl=1' -O ./wild_pred/wild_pred.zip
 fi
 
 # extract files
