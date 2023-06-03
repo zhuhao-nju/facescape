@@ -25,7 +25,7 @@ Install [psbody-mesh](https://github.com/MPI-IS/mesh) following its instruction.
 The benchmark data (207 MB) that contains images, meshes, and parameters can be downloaded from NJU Drive:
 ```
 cd data
-./download_gt_data.sh
+./download_data.sh
 ```
 or be downloaded from [Google Drive](https://drive.google.com/file/d/1krYVZJ5ZYsqbUYh9lWCTxpfvOgLYNNml/view?usp=sharing). Using these data indicates that you have to obey the [License Agreement](https://github.com/zhuhao-nju/facescape/blob/master/doc/License_Agreement.pdf) of FaceScape.
 
