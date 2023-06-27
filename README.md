@@ -2,7 +2,7 @@
 
 *FaceScape* provides large-scale high-quality 3D face datasets, parametric models, docs and toolkits about 3D face related technology. [[CVPR2020 paper]](https://openaccess.thecvf.com/content_CVPR_2020/papers/Yang_FaceScape_A_Large-Scale_High_Quality_3D_Face_Dataset_and_Detailed_CVPR_2020_paper.pdf) &nbsp;&nbsp;[[extended arXiv Report]](https://arxiv.org/pdf/2111.01082.pdf) &nbsp;&nbsp; [[supplementary]](https://openaccess.thecvf.com/content_CVPR_2020/supplemental/Yang_FaceScape_A_Large-Scale_CVPR_2020_supplemental.zip)
 
-Our latest progress will be updated to this repository constantly - *[latest update: 2022/9/9]*
+Our latest progress will be updated to this repository constantly - *[latest update: 2023/6/27]*
 
 ### Data
 
@@ -42,8 +42,11 @@ Start using python toolkit [here](/toolkit/README.md), the demos include:
 
 ### Open-Source Projects using FaceScape
 
-**[MoFaNeRF: Morphable Facial Neural Radiance Field (ECCV 2022)](https://github.com/zhuhao-nju/mofanerf)**  
-*Yiyu Zhuang\*, Hao Zhu\*, Xusen Sun, Xun Cao*
+**[High-fidelity 3D Face Generation from Natural Language Descriptions (CVPR 2023)](https://github.com/zhuhao-nju/describe3d)**  
+*Menghua Wu, Hao Zhu<sup>#</sup>, Linjia Huang, Yiyu Zhuang, Yuanxun Lu, Xun Cao*
+
+**[RAFaRe: Learning Robust and Accurate Non-parametric 3D Face Reconstruction from Pseudo 2D&3D Pairs (AAAI 2023)](https://github.com/zhuhao-nju/rafare)**  
+*Longwei Guo, Hao Zhu<sup>#</sup>, Yuanxun Lu, Menghua Wu, Xun Cao*
 
 **[Structure-aware Editable Morphable Model for 3D Facial Detail Animation and Manipulation (ECCV2022)](https://github.com/gerwang/facial-detail-manipulation)**  
 *Jingwang Ling, Zhibo Wang, Ming Lu, Quan Wang, Chen Qian, Feng Xu*
