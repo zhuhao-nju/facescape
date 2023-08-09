@@ -103,6 +103,15 @@ The pre-print paper is available on [arXiv](https://arxiv.org/abs/2003.13989).<b
 If you find this project helpful to your research, please consider citing:
 
 ```
+@article{zhu2023facescape,
+  title={FaceScape: 3D Facial Dataset and Benchmark for Single-View 3D Face Reconstruction},
+  author={Zhu, Hao and Yang, Haotian and Guo, Longwei and Zhang, Yidi and Wang, Yanru and Huang, Mingkai and Wu, Menghua and Shen, Qiu and Yang, Ruigang and Cao, Xun},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  year={2023},
+  publisher={IEEE}
+}
+```
+```
 @InProceedings{yang2020facescape,
   author = {Yang, Haotian and Zhu, Hao and Wang, Yanru and Huang, Mingkai and Shen, Qiu and Yang, Ruigang and Cao, Xun},
   title = {FaceScape: A Large-Scale High Quality 3D Face Dataset and Detailed Riggable 3D Face Prediction},
@@ -110,16 +119,6 @@ If you find this project helpful to your research, please consider citing:
   month = {June},
   year = {2020},
   page = {601--610}}
-```
-
-Exntended version with the benchmark:
-```
-@article{zhu2021facescape,
-  title={FaceScape: 3D Facial Dataset and Benchmark for Single-View 3D Face Reconstruction},
-  author={Zhu, Hao and Yang, Haotian and Guo, Longwei and Zhang, Yidi and Wang, Yanru and Huang, Mingkai and Shen, Qiu and Yang, Ruigang and Cao, Xun},
-  journal={arXiv preprint arXiv:2111.01082},
-  year={2021}
-}
 ```
 
 ### Acknowledge
