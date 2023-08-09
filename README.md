@@ -6,8 +6,8 @@ Our latest progress will be updated to this repository constantly - *[latest upd
 
 ### Data
 
-The data can be downloaded in https://facescape.nju.edu.cn/ after requesting a license key.  
-*New:* Share link on Google Drive is available after requesting license key, view [here](https://github.com/zhuhao-nju/facescape/blob/master/doc/facescape_googledrive.md) for detail.  
+The data can be downloaded at https://facescape.nju.edu.cn/ after requesting a license key.  
+*New:* Share link on Google Drive is available after requesting the license key, view [here](https://github.com/zhuhao-nju/facescape/blob/master/doc/facescape_googledrive.md) for detail.  
 *New:* The bilinear model ver1.6 can be downloaded without requesting a license key, view [here](https://github.com/zhuhao-nju/facescape/blob/master/doc/external_link_fsbm.md) for the link and rules.
 
 <img src="/figures/facescape_all.jpg" width="800">
@@ -71,29 +71,29 @@ Start using python toolkit [here](/toolkit/README.md), the demos include:
 ### ChangeLog
 
 * **2022/9/9** <br>
-One section is added to introduce open-source projects that uses FaceScape data or models, and will be continuously updated.
+One section is added to introduce open-source projects that use FaceScape data or models, and will be continuously updated.
 * **2022/7/26** <br>
 The data for training and testing [MoFaNeRF](https://github.com/zhuhao-nju/mofanerf) is added to the [download page](https://facescape.nju.edu.cn/).
 * **2021/12/2** <br>
-Benchmark to evaluate single-view face reconstruction is available, view [here](https://github.com/zhuhao-nju/facescape/blob/master/benchmark/README.md) for detail.
+A benchmark to evaluate single-view face reconstruction is available, view [here](https://github.com/zhuhao-nju/facescape/blob/master/benchmark/README.md) for detail.
 * **2021/8/16** <br>
-Share link on google drive is available after requesting license key, view [here](https://github.com/zhuhao-nju/facescape/blob/master/doc/facescape_googledrive.md) for detail.
+Share link on google drive is available after requesting the license key, view [here](https://github.com/zhuhao-nju/facescape/blob/master/doc/facescape_googledrive.md) for detail.
 * **2021/5/13** <br>
-Fitting demo is added to toolkit. Please note if you download bilinear model v1.6 before 2021/5/13, you need to download it again, because some parameters required by fitting demo are supplemented.
+The fitting demo is added to the toolkit. Please note if you downloaded the bilinear model v1.6 before 2021/5/13, you need to download it again, because some parameters required by the fitting demo are supplemented.
 * **2021/4/14** <br>
 The bilinear model has been updated to 1.6, check it [here](/doc/doc_bilinear_model.md).<br>
-The new bilinear model now can be downloaded from *NJU drive* or *Google Drive* without requesting a license key. Check it [here](/doc/external_link_fsbm.md).<br>
-ToolKit and Doc has been updated with new content.<br>
+The new bilinear model now can be downloaded from *NJU Drive* or *Google Drive* without requesting a license key. Check it [here](/doc/external_link_fsbm.md).<br>
+ToolKit and Doc have been updated with new content.<br>
 Some wrong ages and genders in the info list are corrected in "info_list_v2.txt".<br>
 * **2020/9/27** <br>
 The code of detailed riggable 3D face prediction is released, check it [here](https://github.com/yanght321/Detailed3DFace.git).<br>
 * **2020/7/25** <br>
 Multi-view data is available for download.<br>
-Bilinear model is updated to ver 1.3, with vertex-color added.<br>
-Info list including gender and age is available in download page.<br>
+The bilinear model is updated to ver 1.3, with vertex-color added.<br>
+Info list including gender and age is available on the download page.<br>
 Tools and samples are added to this repository.<br>
 * **2020/7/7** <br>
-Bilinear model is updated to ver 1.2.
+The bilinear model is updated to ver 1.2.
 * **2020/6/13** <br>
 The [website]((https://facescape.nju.edu.cn/)) of FaceScape is online. <br>3D models and bilinear models are available for download.<br>
 * **2020/3/31** <br>
@@ -108,11 +108,10 @@ If you find this project helpful to your research, please consider citing:
   author={Zhu, Hao and Yang, Haotian and Guo, Longwei and Zhang, Yidi and Wang, Yanru and Huang, Mingkai and Wu, Menghua and Shen, Qiu and Yang, Ruigang and Cao, Xun},
   journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
   year={2023},
-  publisher={IEEE}
-}
+  publisher={IEEE}}
 ```
 ```
-@InProceedings{yang2020facescape,
+@inproceedings{yang2020facescape,
   author = {Yang, Haotian and Zhu, Hao and Wang, Yanru and Huang, Mingkai and Shen, Qiu and Yang, Ruigang and Cao, Xun},
   title = {FaceScape: A Large-Scale High Quality 3D Face Dataset and Detailed Riggable 3D Face Prediction},
   booktitle = {IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
