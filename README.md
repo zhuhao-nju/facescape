@@ -2,7 +2,7 @@
 
 *FaceScape* provides large-scale high-quality 3D face datasets, parametric models, docs and toolkits about 3D face related technology. [[CVPR2020 paper]](https://openaccess.thecvf.com/content_CVPR_2020/papers/Yang_FaceScape_A_Large-Scale_High_Quality_3D_Face_Dataset_and_Detailed_CVPR_2020_paper.pdf) &nbsp;&nbsp;[[extended arXiv Report]](https://arxiv.org/pdf/2111.01082.pdf) &nbsp;&nbsp; [[supplementary]](https://openaccess.thecvf.com/content_CVPR_2020/supplemental/Yang_FaceScape_A_Large-Scale_CVPR_2020_supplemental.zip)
 
-Our latest progress will be updated to this repository constantly - *[latest update: 2023/6/27]*
+Our latest progress will be updated to this repository constantly - *[latest update: 2023/8/10]*
 
 ### Data
 
@@ -106,7 +106,7 @@ If you find this project helpful to your research, please consider citing:
 @article{zhu2023facescape,
   title={FaceScape: 3D Facial Dataset and Benchmark for Single-View 3D Face Reconstruction},
   author={Zhu, Hao and Yang, Haotian and Guo, Longwei and Zhang, Yidi and Wang, Yanru and Huang, Mingkai and Wu, Menghua and Shen, Qiu and Yang, Ruigang and Cao, Xun},
-  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)},
   year={2023},
   publisher={IEEE}}
 ```
@@ -121,4 +121,4 @@ If you find this project helpful to your research, please consider citing:
 ```
 
 ### Acknowledge
-The project is supported by [CITE Lab](https://cite.nju.edu.cn/) of Nanjing University, Baidu Research, and Aiqiyi Inc.  The student contributors: Ji Shengyu, Jin Wei, Huang Mingkai, Wang Yanru, Yang Haotian, Zhang Yidi, Xiao Yunze, Ding Yuxin, Guo Longwei.
+The project is supported by [CITE Lab](https://cite.nju.edu.cn/) of Nanjing University, Baidu Research, and Aiqiyi Inc.  The student contributors: Shengyu Ji, Wei Jin, Mingkai Huang, Yanru Wang, Haotian Yang, Yidi Zhang, Yunze Xiao, Yuxin Ding, Longwei Guo, Menghua Wu, Yiyu Zhuang.
