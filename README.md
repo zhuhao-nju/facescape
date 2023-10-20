@@ -2,7 +2,7 @@
 
 *FaceScape* provides large-scale high-quality 3D face datasets, parametric models, docs and toolkits about 3D face related technology. [[CVPR2020 paper]](https://openaccess.thecvf.com/content_CVPR_2020/papers/Yang_FaceScape_A_Large-Scale_High_Quality_3D_Face_Dataset_and_Detailed_CVPR_2020_paper.pdf) &nbsp;&nbsp;[[extended arXiv Report]](https://arxiv.org/pdf/2111.01082.pdf) &nbsp;&nbsp; [[supplementary]](https://openaccess.thecvf.com/content_CVPR_2020/supplemental/Yang_FaceScape_A_Large-Scale_CVPR_2020_supplemental.zip)
 
-Our latest progress will be updated to this repository constantly - *[latest update: 2023/8/10]*
+Our latest progress will be updated to this repository constantly - *[latest update: 2023/10/20]*
 
 ### Data
 
@@ -69,7 +69,8 @@ Start using python toolkit [here](/toolkit/README.md), the demos include:
 
 
 ### ChangeLog
-
+* **2023/10/20** <br>
+Benchmark data and results have been updated to be consistent with the experiments in the latest journal version paper.
 * **2022/9/9** <br>
 One section is added to introduce open-source projects that use FaceScape data or models, and will be continuously updated.
 * **2022/7/26** <br>

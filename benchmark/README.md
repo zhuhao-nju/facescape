@@ -1,5 +1,5 @@
 # Benchmark for SVFR methods
-*This is a beta version*.  We present a benchmark to evaluate the accuracy of single-view face 3D reconstruction (SVFR) methods on our in-the-wild data and in-the-lab data. Different from [NoW benchmark](https://ringnet.is.tue.mpg.de/challenge.html) that evaluates the shape recovery for the expression-free canonical face, our benchmark takes various poses, expressions, environments and focal lengths into consideration. More details about the benchmark can be found in Sec. 6 in the [extended paper](https://arxiv.org/pdf/2111.01082.pdf).
+*This is a beta version*.  We present a benchmark to evaluate the accuracy of single-view face 3D reconstruction (SVFR) methods on our in-the-wild data and in-the-lab data. Different from [NoW benchmark](https://ringnet.is.tue.mpg.de/challenge.html) that evaluates the shape recovery for the expression-free canonical face, our benchmark takes various poses, expressions, environments and focal lengths into consideration. More details about the benchmark can be found in Sec. 6 in our [journal paper](https://arxiv.org/abs/2111.01082).
 
 ### Environment
 
@@ -27,7 +27,7 @@ The benchmark data (207 MB) that contains images, meshes, and parameters can be 
 cd data
 ./download_data.sh
 ```
-or be downloaded from [Google Drive](https://drive.google.com/file/d/1krYVZJ5ZYsqbUYh9lWCTxpfvOgLYNNml/view?usp=sharing). Using these data indicates that you have to obey the [License Agreement](https://github.com/zhuhao-nju/facescape/blob/master/doc/License_Agreement.pdf) of FaceScape.
+or be downloaded from [Google Drive](https://drive.google.com/file/d/1-aZjHXpofKsDEa-rNunE2HsgUMlilKAY/view?usp=share_link). Using these data indicates that you have to obey the [License Agreement](https://github.com/zhuhao-nju/facescape/blob/master/doc/License_Agreement.pdf) of FaceScape.
 
 ### Show Pre-evaluated Results
 The quantitative evaluations are put in './eval_result/'. You may show the quantitative results in command-line:
@@ -41,7 +41,7 @@ cd code
 python export.py
 ```
 
-The heat meshes have been generated where the distance error is visualized as vertex color. The heat meshes of 14 reported methods can be downloaded from [NJU Drive](https://box.nju.edu.cn/f/e2d174cc0bbe46b4b8db/?dl=1) or [Google Drive](https://drive.google.com/file/d/1BHL83xC09wnZw9aIzhQ2NPjjDoUYKThF/view?usp=sharing) (5.9 GB).
+The heat meshes have been generated where the distance error is visualized as vertex color. 
 
 ### Run Evaluation Code
 
@@ -52,7 +52,7 @@ Firstly, download the result models of the 14 methods (14.3 GB) from NJU Drive:
 cd pred
 ./download_pred.sh
 ```
-or from Google Drive ([lab_pred.zip](https://drive.google.com/file/d/1catZZb8XTCIess_aea-46VieL197tzNh/view?usp=sharing), [wild_pred.zip](https://drive.google.com/file/d/10tN9cdNYobPC_laTBTNoX81USl6zFVOC/view?usp=sharing)).
+or from Google Drive ([lab_pred.zip](https://drive.google.com/file/d/1catZZb8XTCIess_aea-46VieL197tzNh/view?usp=share_link), [wild_pred.zip](https://drive.google.com/file/d/1pY0Asfal7SPBfdRX4D4ecPQfXEhPo1R_/view?usp=share_link)).
 
 Then run the following code to get the evaluation results:
 ```
@@ -75,10 +75,6 @@ python ./evaluator.py --dataset fslab --method $METHOD_NAME$
 Use the option '--heat_mesh False' if the heat mesh is not required. Use the option '--num $IDX$' to evaluate only one tuple with index = $IDX$.
 
 ### Visualize
-
-The samples of the two data sets are shown:
-
-<img src="/figures/benchmark_data.jpg" width="800">
 
 The quantitative evaluations are plotted as:
 
