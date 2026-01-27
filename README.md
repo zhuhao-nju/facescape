@@ -2,13 +2,11 @@
 
 *FaceScape* provides large-scale high-quality 3D face datasets, parametric models, docs and toolkits about 3D face related technology. [[CVPR2020 paper]](https://openaccess.thecvf.com/content_CVPR_2020/papers/Yang_FaceScape_A_Large-Scale_High_Quality_3D_Face_Dataset_and_Detailed_CVPR_2020_paper.pdf) &nbsp;&nbsp;[[extended arXiv Report]](https://arxiv.org/pdf/2111.01082.pdf) &nbsp;&nbsp; [[supplementary]](https://openaccess.thecvf.com/content_CVPR_2020/supplemental/Yang_FaceScape_A_Large-Scale_CVPR_2020_supplemental.zip)
 
-Our latest progress will be updated to this repository constantly - *[latest update: 2023/10/20]*
+Our latest progress will be updated to this repository constantly - *[latest update: 2026/01/27]*
 
 ### Data
 
-The data can be downloaded at https://facescape.nju.edu.cn/ after requesting a license key.  
-*New:* Share link on Google Drive is available after requesting the license key, view [here](https://github.com/zhuhao-nju/facescape/blob/master/doc/facescape_googledrive.md) for detail.  
-*New:* The bilinear model ver1.6 can be downloaded without requesting a license key, view [here](https://github.com/zhuhao-nju/facescape/blob/master/doc/external_link_fsbm.md) for the link and rules.
+*New:* The data can be accessed at the new website https://nju-3dv.github.io/projects/FaceScape/. The old website (facescape.nju.edu.cn) will be decommissioned soon.
 
 <img src="/figures/facescape_all.jpg" width="800">
 
@@ -40,7 +38,28 @@ Start using python toolkit [here](/toolkit/README.md), the demos include:
 * [rig](https://nbviewer.jupyter.org/github/zhuhao-nju/facescape/blob/master/toolkit/demo_rig.ipynb) - rig 20 expressions to 52 expressions.
 
 
-### Open-Source Projects using FaceScape
+### Our More Projects related to FaceScape
+
+**[Towards Native Generative Model for 3D Head Avatar (Fundamental Research 2026)]()**  
+*Yiyu Zhuang\*, Hao Zhu\*, Jiawei Zhang\*, Yuxiao He\*, Yanwen Wang, Jiahe Zhu, Yao Yao, Siyu Zhu, Xun Cao<sup>#</sup>*
+
+**[FATE: Full-head Gaussian Avatar with Textural Editing from Monocular Video (CVPR 2025)](https://zjwfufu.github.io/FATE-page/)**  
+*Jiawei Zhang, Zijian Wu, Zhiyang Liang, Yicheng Gong, Dongfang Hu, Yao Yao, Xun Cao, Hao Zhu<sup>#</sup>*
+
+**[DicFace: Dirichlet-Constrained Variational Codebook Learning for Temporally Coherent Video Face Restoration (CVPR 2025)](https://github.com/fudan-generative-vision/DicFace)**  
+*Yan Chen\*, Hanlin Shang\*, Ce Liu, Yuxuan Chen, Hui Li, Weihao Yuan, Hao Zhu, Zilong Dong, Siyu Zhu<sup>#</sup>*
+
+**[VividTalk: One-Shot Audio-Driven Talking Head Generation Based on 3D Hybrid Prior (3DV 2025)]()**  
+*Xusen Sun, Longhao Zhang, Hao Zhu<sup>#</sup>, Peng Zhang<sup>#</sup>, Bang Zhang, Xinya Ji, Kangneng Zhou, Daiheng Gao, Liefeng Bo, Xun Cao*
+
+**[Hallo2: Long-Duration and High-Resolution Audio-Driven Portrait Image Animation (ICLR 2025)](https://fudan-generative-vision.github.io/hallo2/#/)**  
+*Jiahao Cui\*, Hui Li\*, Yao Yao, Hao Zhu, Hanlin Shang, Kaihui Cheng, Hang Zhou, Siyu Zhu<sup>#</sup>, Jingdong Wang*
+
+**[EmoTalk3D: High-Fidelity Free-View Synthesis of Emotional 3D Talking Head (ECCV 2024)](https://nju-3dv.github.io/projects/EmoTalk3D)**  
+*Qianyun He, Xinya Ji, Yicheng Gong, Yuanxun Lu, Zhengyu Diao, Linjia Huang, Yao Yao, Siyu Zhu, Zhan Ma, Songcen Xu, Xiaofei Wu, Zixiao Zhang, Xun Cao, Hao Zhu<sup>#</sup>*
+
+**[Head360: Learning a Parametric 3D Full-Head for Free-View Synthesis in 360° (ECCV 2024)](https://nju-3dv.github.io/projects/Head360)**  
+*Yuxiao He, Yiyu Zhuang, Yanwen Wang, Yao Yao, Siyu Zhu, Xiaoyu Li, Qi Zhang, Xun Cao, Hao Zhu<sup>#</sup>*
 
 **[High-fidelity 3D Face Generation from Natural Language Descriptions (CVPR 2023)](https://github.com/zhuhao-nju/describe3d)**  
 *Menghua Wu, Hao Zhu<sup>#</sup>, Linjia Huang, Yiyu Zhuang, Yuanxun Lu, Xun Cao*
@@ -48,27 +67,13 @@ Start using python toolkit [here](/toolkit/README.md), the demos include:
 **[RAFaRe: Learning Robust and Accurate Non-parametric 3D Face Reconstruction from Pseudo 2D&3D Pairs (AAAI 2023)](https://github.com/zhuhao-nju/rafare)**  
 *Longwei Guo, Hao Zhu<sup>#</sup>, Yuanxun Lu, Menghua Wu, Xun Cao*
 
-**[Structure-aware Editable Morphable Model for 3D Facial Detail Animation and Manipulation (ECCV2022)](https://github.com/gerwang/facial-detail-manipulation)**  
-*Jingwang Ling, Zhibo Wang, Ming Lu, Quan Wang, Chen Qian, Feng Xu*
-
-**[HeadNeRF: A Real-Time NeRF-Based Parametric Head Model (CVPR2022)](https://github.com/CrisHY1995/headnerf)**  
-*Yang Hong, Bo Peng, Haiyao Xiao, Ligang Liu, Juyong Zhang*
-
-**[ImFace: A Nonlinear 3D Morphable Face Model with Implicit Neural Representations (CVPR2022)](https://github.com/MingwuZheng/ImFace)**  
-*Mingwu Zheng, Hongyu Yang, Di Huang, Liming Chen*
-
 **[Detailed Facial Geometry Recovery from Multi-view Images by Learning an Implicit Function (AAAI 2022)](https://github.com/zhuhao-nju/mvfr)**  
 *Yunze Xiao\*, Hao Zhu\*, Haotian Yang, Zhengyu Diao, Xiangju Lu, Xun Cao*
 
-**[Deep Unsupervised 3D SfM Face Reconstruction Based on Massive Landmark Bundle Adjustment (ACM MM 2021)](https://github.com/BoomStarcuc/3DSfMFaceReconstruction)**  
-*Yuxing Wang, Yawen Lu, Zhihua Xie, Guoyu Lu*
-
-**[Detailed Riggable 3D face Prediction Code of FaceScape (CVPR2020)](https://github.com/yanght321/Detailed3DFace.git)**  
-*Haotian Yang\*, Hao Zhu\*, Yanru Wang, Mingkai Huang, Qiu Shen, Ruigang Yang, Xun Cao*
-
-
 
 ### ChangeLog
+* **2026/01/27** <br>
+The download website for the FaceScape dataset has been relocated to https://nju-3dv.github.io/projects/FaceScape/. All data can now be accessed on the new site.
 * **2023/10/20** <br>
 Benchmark data and results have been updated to be consistent with the experiments in the latest journal version paper.
 * **2022/9/9** <br>
@@ -78,12 +83,12 @@ The data for training and testing [MoFaNeRF](https://github.com/zhuhao-nju/mofan
 * **2021/12/2** <br>
 A benchmark to evaluate single-view face reconstruction is available, view [here](https://github.com/zhuhao-nju/facescape/blob/master/benchmark/README.md) for detail.
 * **2021/8/16** <br>
-Share link on google drive is available after requesting the license key, view [here](https://github.com/zhuhao-nju/facescape/blob/master/doc/facescape_googledrive.md) for detail.
+Share link on Google Drive is available after requesting the license key, view [here](https://github.com/zhuhao-nju/facescape/blob/master/doc/facescape_googledrive.md) for details.
 * **2021/5/13** <br>
 The fitting demo is added to the toolkit. Please note if you downloaded the bilinear model v1.6 before 2021/5/13, you need to download it again, because some parameters required by the fitting demo are supplemented.
 * **2021/4/14** <br>
 The bilinear model has been updated to 1.6, check it [here](/doc/doc_bilinear_model.md).<br>
-The new bilinear model now can be downloaded from *NJU Drive* or *Google Drive* without requesting a license key. Check it [here](/doc/external_link_fsbm.md).<br>
+The new bilinear model can now be downloaded from *NJU Drive* or *Google Drive* without requesting a license key. Check it [here](/doc/external_link_fsbm.md).<br>
 ToolKit and Doc have been updated with new content.<br>
 Some wrong ages and genders in the info list are corrected in "info_list_v2.txt".<br>
 * **2020/9/27** <br>
